@@ -1,0 +1,9 @@
+<p>
+  Please, answer the questions below!
+</p>
+
+<ul>
+  <li *ngFor="let question of questions">{{question}}</li>
+</ul>
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
+<a (click)="logout()" href="#">Click Here to logout</a>

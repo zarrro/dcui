@@ -1,0 +1,51 @@
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Injectable } from '@angular/core';
+import { Config } from '../index';
+
+import 'rxjs/add/operator/toPromise';
+
+const BACKEND_URL = Config.API;
+
+/**
+Helper class. Wraps the angular http client. Adds common logic specific to the
+DC backend communication - like host name,  headers, etc. Also, converts the API
+to promises based.
+*/
+
+@Injectable()
+export class BackendService {
+
+  private static getDefaultRO(): RequestOptions {
+    let ro = new RequestOptions();
+    ro.headers = new Headers();
+    ro.headers.set('X-Requested-With', 'XMLHttpRequest');
+    ro.withCredentials = true;
+    return ro;
+  }
+  private static defaultRO = BackendService.getDefaultRO();
+
+  constructor(private http: Http) { }
+
+  public get(path: string, headers?: any): Promise<any> {
+    let ro = (headers) ? BackendService.getCustomRO(headers) :
+      BackendService.defaultRO;
+    return this.http.get(BACKEND_URL + "/" + path, ro).toPromise();
+  }
+
+  public post(path: string, body: any, headers?: any): Promise<any> {
+    let ro = (headers) ? BackendService.getCustomRO(headers) :
+      BackendService.defaultRO;
+    ro.method = "POST";
+    console.log(ro);
+    console.log('post body ' + body);
+    return this.http.post(BACKEND_URL + "/" + path, body, ro).toPromise();
+  }
+
+  private static getCustomRO(headers: any): RequestOptions {
+    let ret = BackendService.getDefaultRO();
+    for (let h in headers) {
+      ret.headers.append(h, headers[h]);
+    }
+    return ret;
+  }
+}
