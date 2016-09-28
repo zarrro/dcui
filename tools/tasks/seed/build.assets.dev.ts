@@ -13,7 +13,6 @@ export = () => {
     '!' + join(APP_SRC, '**', '*.ts'),
     '!' + join(APP_SRC, '**', '*.scss')
   ].concat(TEMP_FILES.map((p) => { return '!' + p; }));
-
   return gulp.src(paths)
     .pipe(gulp.dest(APP_DEST));
 };

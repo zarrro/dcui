@@ -4,6 +4,7 @@ import { join } from 'path';
 import * as slash from 'slash';
 
 import { APP_BASE, APP_DEST, APP_SRC, DEPENDENCIES, CSS_DEST, ASSETS_SRC } from '../../config';
+
 import { templateLocals } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();
@@ -26,6 +27,7 @@ export = () => {
  * @param {string} name - The file to be injected.
  */
 function inject(name?: string) {
+  let tmp = getInjectablesDependenciesRef(name);
   return plugins.inject(gulp.src(getInjectablesDependenciesRef(name), { read: false }), {
     name,
     transform: transformPath()

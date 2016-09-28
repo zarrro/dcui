@@ -1,18 +1,39 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Credentials } from './credentials';
 import { BackendService } from '../shared/backend-service/backend-service';
 
 @Injectable()
 export class AuthService {
 
-  constructor(private bs: BackendService) {
+  constructor(private bs: BackendService) { }
 
+  fire: EventEmitter<boolean> = new EventEmitter();
+
+  change() {
+    console.log('change started');
+    this.fire.emit(true);
   }
 
-  private authenticated: boolean = false;;
+  private initialized: boolean = false;
+  private authenticated: boolean = false;
 
-  logout(): Promise<any> {
-    return this.bs.post('logout', '');
+  isAuthenticated(): Promise<boolean> {
+    if (!this.initialized) {
+      return this.getUser();
+    }
+    return Promise.resolve(this.authenticated);
+  }
+
+  authenticationChanges() {
+    return this.fire;
+  }
+
+  logout(): Promise<boolean> {
+    return this.bs.post('logout', '').then(res => { return this.getUser(); })
+      .catch(err => {
+        console.error('AuthService.logout: ' + err);
+        this.getUser();
+      });
   }
 
   login(cred: Credentials): Promise<boolean> {
@@ -23,18 +44,25 @@ export class AuthService {
     return this.getUser(headers);
   }
 
-  isLoggedIn(): Promise<boolean> {
-    if (this.authenticated) {
-      return Promise.resolve(true);
-    } else {
-      return this.getUser();
-    }
-  }
-
   private getUser(headers?: any): Promise<boolean> {
     return this.bs.get('user', headers).then(response => {
-      this.authenticated = (response.json().name) ? true : false;
+      let newAuthenticatedVal = (response.json().name) ? true : false;
+      if (this.authenticated != newAuthenticatedVal) {
+        // authenticated state is changed => update the value and fire notification
+        this.setAuthenticated(newAuthenticatedVal);
+      }
       return this.authenticated;
+    }).catch(err => {
+      this.setAuthenticated(false);
+      console.error('AuthService.getUser: ' + err);
     });
+  }
+
+  private setAuthenticated(val: boolean): void {
+    this.authenticated = val;
+    this.fire.emit(this.authenticated);
+    if (!this.initialized) {
+      this.initialized = true;
+    }
   }
 }

@@ -5,13 +5,14 @@ import { RouterModule } from '@angular/router';
 import { BackendService } from './backend-service/backend-service';
 import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
+import { AuthModule } from '../auth/auth.module';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
  */
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, AuthModule],
   declarations: [ToolbarComponent, NavbarComponent],
   exports: [ToolbarComponent, NavbarComponent,
     CommonModule, FormsModule, RouterModule],
