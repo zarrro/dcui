@@ -3,4 +3,5 @@
   <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">ABOUT</a>
   <a *ngIf="!authenticated" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">LOGIN</a>
   <a *ngIf="authenticated" (click)="logout()">LOGOUT</a>
+  <span *ngIf="authenticated">Welcome, {{username}}!</span>
 </nav>

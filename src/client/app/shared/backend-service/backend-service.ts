@@ -1,4 +1,4 @@
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Config } from '../index';
 
@@ -13,12 +13,15 @@ to promises based.
 @Injectable()
 export class BackendService {
 
-  backendURL: string;
+  private static defaultRO = BackendService.getDefaultRO();
+  private backendURL: string;
 
-  constructor(private http: Http) {
-    this.backendURL = Config.API;
-    console.log(":::: constructor BackendService config:");
-    console.log(Config);
+  private static getCustomRO(headers: any): RequestOptions {
+    let ret = BackendService.getDefaultRO();
+    for (let h in headers) {
+      ret.headers.append(h, headers[h]);
+    }
+    return ret;
   }
 
   private static getDefaultRO(): RequestOptions {
@@ -28,29 +31,26 @@ export class BackendService {
     ro.withCredentials = true;
     return ro;
   }
-  private static defaultRO = BackendService.getDefaultRO();
 
-
-  public get(path: string, headers?: any): Promise<any> {
-    let ro = (headers) ? BackendService.getCustomRO(headers) :
-      BackendService.defaultRO;
-    return this.http.get(this.backendURL + "/" + path, ro).toPromise();
+  constructor(private http: Http) {
+    this.backendURL = Config.API;
+    console.log(Config);
   }
 
-  public post(path: string, body: any, headers?: any): Promise<any> {
+  get(path: string, headers?: any): Promise<any> {
     let ro = (headers) ? BackendService.getCustomRO(headers) :
       BackendService.defaultRO;
-    ro.method = "POST";
+    return this.http.get(this.backendURL + '/' + path, ro).toPromise();
+  }
+
+  post(path: string, body: any, headers?: any): Promise<any> {
+    let ro = (headers) ? BackendService.getCustomRO(headers) :
+      BackendService.defaultRO;
+    ro.method = 'POST';
     console.log(ro);
     console.log('post body ' + body);
-    return this.http.post(this.backendURL + "/" + path, body, ro).toPromise();
+    return this.http.post(this.backendURL + '/' + path, body, ro).toPromise();
   }
 
-  private static getCustomRO(headers: any): RequestOptions {
-    let ret = BackendService.getDefaultRO();
-    for (let h in headers) {
-      ret.headers.append(h, headers[h]);
-    }
-    return ret;
-  }
+
 }

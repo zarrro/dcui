@@ -5,17 +5,17 @@ import { BackendService } from '../shared/backend-service/backend-service';
 @Injectable()
 export class AuthService {
 
-  constructor(private bs: BackendService) { }
+  private fire: EventEmitter<boolean> = new EventEmitter();
+  private initialized: boolean = false;
+  private authenticated: boolean = false;
+  private name: string = '';
 
-  fire: EventEmitter<boolean> = new EventEmitter();
+  constructor(private bs: BackendService) { }
 
   change() {
     console.log('change started');
     this.fire.emit(true);
   }
-
-  private initialized: boolean = false;
-  private authenticated: boolean = false;
 
   isAuthenticated(): Promise<boolean> {
     if (!this.initialized) {
@@ -38,16 +38,24 @@ export class AuthService {
 
   login(cred: Credentials): Promise<boolean> {
     let headers = {
-      authorization: "Basic " + btoa(cred.username + ":"
+      authorization: 'Basic ' + btoa(cred.username + ':'
         + cred.password)
     };
     return this.getUser(headers);
   }
 
+  /**
+    Returns the username of the last authenticated user.
+    */
+  username() {
+    return this.name;
+  }
+
   private getUser(headers?: any): Promise<boolean> {
     return this.bs.get('user', headers).then(response => {
-      let newAuthenticatedVal = (response.json().name) ? true : false;
-      if (this.authenticated != newAuthenticatedVal) {
+      this.name = response.json().name;
+      let newAuthenticatedVal = (this.name) ? true : false;
+      if (this.authenticated !== newAuthenticatedVal) {
         // authenticated state is changed => update the value and fire notification
         this.setAuthenticated(newAuthenticatedVal);
       }

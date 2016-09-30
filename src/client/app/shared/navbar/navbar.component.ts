@@ -13,10 +13,11 @@ import { Subscription }   from 'rxjs/Subscription';
   styleUrls: ['navbar.component.css'],
 })
 
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
 
   authenticated: boolean = false;
   subscription: Subscription;
+  username: string;
 
   constructor(private auth: AuthService, private router: Router) {
 
@@ -25,6 +26,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.auth.isAuthenticated().then(authenticated => {
       this.authenticated = authenticated;
+      this.username = (authenticated) ? this.auth.username() : '';
     });
     this.subscription = this.auth.authenticationChanges()
       .subscribe((val:boolean) => {
@@ -33,17 +35,16 @@ export class NavbarComponent implements OnInit {
           // so we navigate to the home page
           this.router.navigate(['/']);
         }
-        this.authenticated = val});
+        this.username = (val) ? this.auth.username() : '';
+        this.authenticated = val;
+      });
   }
 
   logout() {
     this.auth.logout();
   }
 
-  /* TODO consider if this is needed
-  http://stackoverflow.com/questions/34926628/angular2-unsubsribe-from-event-in-ngondestroy
   ngOnDestroy() {
-    unsubscribe the authenticationChanges here
+    this.subscription.unsubscribe();
   }
-  */
 }

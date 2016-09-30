@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BackendService } from '../shared/backend-service/backend-service';
 
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -23,7 +22,6 @@ export class AnamnesisService {
 
   private extractData(res: any): string[] {
     let data = res.json();
-    console.log("deleteme: " + data);
     return data.questions || {};
   }
 
