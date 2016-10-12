@@ -1,0 +1,8 @@
+// refer the materialize scss from the npm package
+@import "../../../node_modules/materialize-css/sass/ghpages-materialize.scss";
+
+.navbar-btn {
+  border: 1px solid $navbar-font-color;
+  color: $navbar-font-color;
+  background-color: $primary-color;
+}

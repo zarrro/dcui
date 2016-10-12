@@ -1,7 +1,11 @@
- <nav>
-  <a [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">HOME</a>
-  <a [routerLink]="['/about']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">ABOUT</a>
-  <a *ngIf="!authenticated" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">LOGIN</a>
-  <a *ngIf="authenticated" (click)="logout()">LOGOUT</a>
-  <span *ngIf="authenticated">Welcome, {{username}}!</span>
+<nav role="navigation">
+  <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Dermal Clinic</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a *ngIf="!authenticated" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">My Account</a></li>
+      <li><a *ngIf="authenticated" (click)="logout()">Logout</a></li>
+      <li><a class="waves-effect waves-light btn-flat navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Diagnose</a></li>
+      <li><a class="waves-effect waves-light btn-flat navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Question</a></li>
+    </ul>
+    <span class="right" *ngIf="authenticated">Welcome, {{username}}!</span>
+  </div>
 </nav>

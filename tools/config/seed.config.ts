@@ -267,7 +267,8 @@ export class SeedConfig {
    * The default value is false. Override with the '--scss' flag.
    * @type {boolean}
    */
-  ENABLE_SCSS = argv['scss'] || false;
+  // ENABLE_SCSS = argv['scss'] || false;
+  ENABLE_SCSS = true;
 
   /**
    * The list of NPM dependcies to be injected in the `index.html`.
@@ -278,16 +279,17 @@ export class SeedConfig {
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', env: ENVIRONMENTS.DEVELOPMENT },
     { src: 'rxjs/bundles/Rx.min.js', inject: 'libs', env: ENVIRONMENTS.DEVELOPMENT },
+    { src: 'jquery/dist/jquery.min.js', inject: 'libs' },
+    { src: 'materialize-css/dist/js/materialize.min.js', inject: 'libs' }
   ];
-
-  TESTDEP: InjectableDependency = { src: 'core-js/client/zaro_zaro.min.js', inject: 'shims' };
 
   /**
    * The list of local files to be injected in the `index.html`.
    * @type {InjectableDependency[]}
    */
   APP_ASSETS: InjectableDependency[] = [
-    { src: `${this.CSS_SRC}/main.${this.getInjectableStyleExtension()}`, inject: true, vendor: false },
+    { src: `${this.CSS_SRC}/materialize.${this.getInjectableStyleExtension()}`, inject: true, vendor: false },
+    { src: `${this.CSS_SRC}/main.${this.getInjectableStyleExtension()}`, inject: true, vendor: false }
   ];
 
   /**

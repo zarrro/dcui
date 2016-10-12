@@ -9,8 +9,8 @@ import { Subscription }   from 'rxjs/Subscription';
 @Component({
   moduleId: module.id,
   selector: 'sd-navbar',
-  templateUrl: 'navbar.component.html',
-  styleUrls: ['navbar.component.css'],
+  templateUrl: 'navbar.component.html'
+  // styleUrls: ['navbar.component.css'] - no specific css currently
 })
 
 export class NavbarComponent implements OnInit, OnDestroy {

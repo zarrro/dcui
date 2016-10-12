@@ -6,8 +6,7 @@ import { Router } from '@angular/router';
 @Component({
   moduleId: module.id, // this is needed to correctly resolve paths to templateUrl and Css
   templateUrl: 'login-form.html',
-  selector: 'login-form',
-  styleUrls: ['materialize.css']
+  selector: 'login-form'
 })
 export class LoginFormComponent {
 
