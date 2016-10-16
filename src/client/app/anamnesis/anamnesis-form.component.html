@@ -2,7 +2,41 @@
   Please, answer the questions below!
 </p>
 
-<ul>
-  <li *ngFor="let question of questions">{{question}}</li>
-</ul>
+<div class="row">
+  <form class="col s12">
+    <div class="input-field col s12">
+      <select id="t">
+          <option value="" disabled selected>Choose your option</option>
+          <option value="o">adfad</option>
+          <option value="o1">adfad1</option>
+      </select>
+    </div>
+    <div class="row" *ngFor="let e of entries; let i=index">
+      <div [ngSwitch]="e.answerType">
+        <div class="input-field col s12" *ngSwitchCase="'ENUM'">
+          <select id="{{i}}">
+              <option value="" disabled selected>Choose your option</option>
+              <option *ngFor="let o of e.answerOptions" [value]="o">{{o}}</option>
+          </select>
+          <label [attr.for]="i">{{e.question}}</label>
+        </div>
+        <div class="input-field col s12" *ngSwitchCase="'TEXT'">
+          <input id="{{i}}" type="text" class="validate" name="question_{{i}}">
+          <label [attr.for]="i">{{e.question}}</label>
+        </div>
+        <div class="input-field col s12" *ngSwitchCase="'NUMBER'">
+          <p class="range-field">
+            <input type="range" id="{{i}}" min="0" max="100" />
+          </p>
+          <label [attr.for]="i">{{e.question}}</label>
+        </div>
+      </div>
+    </div>
+  </form>
+  <script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+  </script>
+</div>
 <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>

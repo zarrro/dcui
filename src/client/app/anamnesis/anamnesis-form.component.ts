@@ -8,7 +8,7 @@ import { AnamnesisService } from './anamnesis.service';
 })
 export class AnamnesisFormComponent implements OnInit {
 
-  questions: string[];
+  entries: string[];
   errorMessage: string;
 
   constructor(public anamnesisService: AnamnesisService) { }
@@ -22,7 +22,7 @@ export class AnamnesisFormComponent implements OnInit {
    */
   getQuestions() {
     this.anamnesisService.get()
-      .then(questions => this.questions = questions)
+      .then(entries => {this.entries = entries; /* debug */ console.log(this.entries);})
       .catch(error => this.errorMessage = error);
   }
 }

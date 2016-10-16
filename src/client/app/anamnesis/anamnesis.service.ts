@@ -17,12 +17,12 @@ export class AnamnesisService {
    * @return {string[]} The Observable for the HTTP request.
    */
   get(): Promise<string[]> {
-    return this.bs.get('anamnesisTemplate').then(this.extractData).catch(this.handleError);
+    return this.bs.get('anamnesisTemplates/58028b6c5604e31d24faff21').then(this.extractData).catch(this.handleError);
   }
 
   private extractData(res: any): string[] {
     let data = res.json();
-    return data.questions || {};
+    return data.entries || {};
   }
 
   /**
