@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BackendService } from './backend-service/backend-service';
-import { ToolbarComponent } from './toolbar/index';
 import { NavbarComponent } from './navbar/index';
 import { AuthModule } from '../auth/auth.module';
+import { SelectComponent } from './materialize-select/select.component';
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -13,9 +13,8 @@ import { AuthModule } from '../auth/auth.module';
 
 @NgModule({
   imports: [CommonModule, RouterModule, AuthModule],
-  declarations: [ToolbarComponent, NavbarComponent],
-  exports: [ToolbarComponent, NavbarComponent,
-    CommonModule, FormsModule, RouterModule],
+  declarations: [SelectComponent, NavbarComponent, SelectComponent],
+  exports: [NavbarComponent, CommonModule, FormsModule, RouterModule, SelectComponent],
   providers: [BackendService]
 })
 export class SharedModule {

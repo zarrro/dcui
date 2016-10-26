@@ -16,7 +16,6 @@ export class SelectComponent implements AfterViewInit {
   @Input() options: any[];
 
   ngAfterViewInit() {
-    console.log('debug: select id is: ' + this.id);
     if(this.id) {
       // optimization to init just the select current select element
       $('#'+this.id).material_select();

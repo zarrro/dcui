@@ -1,9 +1,0 @@
-<nav class="white" role="navigation">
-  <div class="nav-wrapper container">
-    <ul class="left hide-on-med-and-down">
-      <a class="waves-effect waves-light btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Diagnose</a>
-      <a class="waves-effect waves-light btn">Question</a>
-      <li><a *ngIf="authenticated" (click)="logout()">Logout</a></li>
-    </ul>
-  </div>
-</nav>

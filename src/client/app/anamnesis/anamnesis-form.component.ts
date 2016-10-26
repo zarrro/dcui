@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 import { AnamnesisService } from './anamnesis.service';
 
 @Component({
@@ -10,8 +10,11 @@ export class AnamnesisFormComponent implements OnInit {
 
   entries: string[];
   errorMessage: string;
+  yearOfBirth: number[];
 
-  constructor(public anamnesisService: AnamnesisService) { }
+  constructor(private elementRef: ElementRef, public anamnesisService: AnamnesisService) {
+    this.yearOfBirth = [1984, 1986, 1987, 1988, 1989, 1990, 1991];
+  }
 
   ngOnInit() {
     this.getQuestions();
@@ -22,7 +25,9 @@ export class AnamnesisFormComponent implements OnInit {
    */
   getQuestions() {
     this.anamnesisService.get()
-      .then(entries => {this.entries = entries; /* debug */ console.log(this.entries);})
+      .then(entries => {
+        this.entries = entries;
+      })
       .catch(error => this.errorMessage = error);
   }
 }
