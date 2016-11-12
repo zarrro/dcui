@@ -279,8 +279,7 @@ export class SeedConfig {
     { src: 'core-js/client/shim.min.js', inject: 'shims' },
     { src: 'systemjs/dist/system.src.js', inject: 'shims', env: ENVIRONMENTS.DEVELOPMENT },
     { src: 'rxjs/bundles/Rx.min.js', inject: 'libs', env: ENVIRONMENTS.DEVELOPMENT },
-    { src: 'jquery/dist/jquery.min.js', inject: 'libs' },
-    { src: 'materialize-css/dist/js/materialize.min.js', inject: 'libs' }
+    { src: 'jquery/dist/jquery.min.js', inject: 'libs' }
   ];
 
   /**
@@ -349,8 +348,19 @@ export class SeedConfig {
       '*': 'node_modules/*'
     },
     packages: {
-      rxjs: { defaultExtension: 'js' }
-    }
+      'rxjs': {
+        'defaultExtension': 'js'
+      },
+      'materialize-css': {
+        'format': 'global',
+        'main': 'dist/js/materialize',
+        'defaultExtension': 'js'
+      },
+      'angular2-materialize': {
+        'main': 'dist/index',
+        'defaultExtension': 'js'
+      }
+    },
   };
 
   /**

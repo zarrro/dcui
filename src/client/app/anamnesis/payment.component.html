@@ -1,0 +1,34 @@
+<div class="row page-wrap" [@isVisibleChanged]="isVisible">
+  <form class="col s6 offset-s3" #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
+    <div class="card-panel">
+      <h5>Contact details</h5>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="text_email" type="text" class="validate" name="email" [(ngModel)]="email">
+          <label for="text_email">Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="text_email_confirm" type="text" class="validate" name="confirmEmail" [(ngModel)]="confirmEmail">
+          <label for="text_email_confirm">Confirm email</label>
+        </div>
+      </div>
+      <h5>Payment</h5>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="text_payment" type="text" class="validate" name="paypal" [(ngModel)]="paypal">
+          <label for="text_payment_confirm">Paypal</label>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn col s6 offset-s3">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+<!--
+<p>FORM: {{JSON.stringify(fRef.value)}}</p>
+<p>data: {{JSON.stringify(f)}}</p>
+-->
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>

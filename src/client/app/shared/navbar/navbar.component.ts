@@ -29,8 +29,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.username = (authenticated) ? this.auth.username() : '';
     });
     this.subscription = this.auth.authenticationChanges()
-      .subscribe((val:boolean) => {
-        if(this.authenticated && !val) {
+      .subscribe((val: boolean) => {
+        if (this.authenticated && !val) {
           // authentication status changes from logged in to logged out
           // so we navigate to the home page
           this.router.navigate(['/']);

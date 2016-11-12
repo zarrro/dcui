@@ -1,31 +1,100 @@
-<p>
-  Please, answer the questions below!
-</p>
-
-<div class="row">
-  <form class="col s6">
-    <div class="row" *ngFor="let e of entries; let i=index">
-      <div [ngSwitch]="e.answerType">
-        <div class="input-field col s12" *ngSwitchCase="'ENUM'">
-          <m-select [id]="i" [options]="e.answerOptions" [label]="e.question"></m-select>
+<div class="row" [@isVisibleChanged]="isVisible">
+  <form class="col s6 offset-s3" #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
+    <div class="card-panel">
+      <h5>Upload a photo</h5>
+      <div class="section">
+        <div class="row valing-wrapper">
+          <div class="col s3 center-align">
+            <img src="assets/camera-icon-small.png" />
+          </div>
+          <div class="col">
+            <p class="valign left-align">Upload an overview photo (25 - 30cm away)</p>
+          </div>
         </div>
-        <div class="input-field col s12" *ngSwitchCase="'TEXT'">
-          <input id="{{i}}" type="text" class="validate" name="question_{{i}}">
-          <label [attr.for]="i">{{e.question}}</label>
-        </div>
-        <div class="input-field col s12" *ngSwitchCase="'NUMBER'">
-          <p class="range-field">
-            <input type="range" id="{{i}}" min="0" max="100" />
-          </p>
-          <label [attr.for]="i">{{e.question}}</label>
+        <div class="row valing-wrapper">
+          <div class="col s3 center-align">
+            <img src="assets/camera-icon-small.png" />
+          </div>
+          <div class="col">
+            <p class="valign left-align">Upload close up photo (10cm - away)</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <m-select [id]="'yob'" [options]="yearOfBirth" [label]="'Year of birth'"></m-select>
+      <h5>Describe your condition</h5>
+      <div class="section">
+        <p class="valign left-align">Tick if you have any of these sympthoms</p>
+        <div class="row">
+          <p class="col s12 m6">
+            <input type="checkbox" id="checkbox_itchy" name="itchy" [(ngModel)]="itchy" />
+            <label for="checkbox_itchy">Itching</label>
+          </p>
+          <p class="col s12 m6">
+            <input type="checkbox" id="checkbox_hurts" name="hurts" [(ngModel)]="hurts" />
+            <label for="checkbox_hurts">Pain</label>
+          </p>
+        </div>
+        <div class="row">
+          <p class="col s12 m6">
+            <input type="checkbox" id="checkbox_hotfeel" name="hotfeel" [(ngModel)]="hotfeel" />
+            <label for="checkbox_hotfeel">Hot feeling</label>
+          </p>
+          <p class="col s12 m6">
+            <input type="checkbox" id="checkbox_coldfeel" name="coldfeel" [(ngModel)]="coldfeel" />
+            <label for="checkbox_coldfeel">Cold feeling</label>
+          </p>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea_desc" class="materialize-textarea" name="description" [(ngModel)]="description"></textarea>
+            <label for="textarea_desc">Describe location, color, size</label>
+          </div>
+        </div>
+      </div>
+
+      <h5>Descibe the history of the decease</h5>
+      <div class="section">
+        <div class="row">
+          <div class="input-field col s12">
+            <select id="select_duration" materialize="material_select" name="duration" [(ngModel)]="duration">
+              <option value="Days">Days</option>
+              <option value="Weeks">Weeks</option>
+              <option value="Months">Months</option>
+              <option value="Years">Years</option>
+            </select>
+            <label for="select_duration">For how long have you had this condition?</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="textarea_history" class="materialize-textarea" name="history" [(ngModel)]="history"></textarea>
+            <label for="textarea_history">Describe how it developed, include any previous treatment, existing diagnosis, known alergies</label>
+          </div>
+        </div>
+      </div>
+
+      <h5>Basic information</h5>
+      <div class="section">
+        <div class="row">
+          <div class="input-field col s6">
+            <select id="select_sex" materialize="material_select" name="sex" [(ngModel)]="sex">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          </div>
+          <div class="input-field col s6">
+            <input id="text_bio_age" type="text" class="validate" name="age" [(ngModel)]="age">
+            <label for="text_bio_age">Age</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn col s6 offset-s3"> > NEXT STEP: PAYMENT</button>
       </div>
     </div>
   </form>
 </div>
+<!--
+<p>FORM: {{JSON.stringify(fRef.value)}}</p>
+<p>data: {{JSON.stringify(f)}}</p>
+-->
 <div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
