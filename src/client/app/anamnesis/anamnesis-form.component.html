@@ -1,22 +1,30 @@
 <div class="row" [@isVisibleChanged]="isVisible">
-  <form class="col s6 offset-s3" #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
+  <form class="col s8 offset-s2" #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
     <div class="card-panel">
       <h5>Upload a photo</h5>
       <div class="section">
+        <!-- div class="col s6 center-align">
+          <img [src]="src" [hidden]="!src"><br>
+          <input #uploadBtnRef type="file" image-upload (imageSelected)="selected1($event)" [resizeOptions]="resizeOptions">
+        </div -->
         <div class="row valing-wrapper">
-          <div class="col s3 center-align">
-            <img src="assets/camera-icon-small.png" />
+          <div class="col s4 center-align">
+            <img class="responsive-img img-btn-hover" [(src)]="img1" (click)="onUploadPhotoClick($event, uploadBtnRef1)"/>
+            <input style="display:none" #uploadBtnRef1 type="file" image-upload (imageSelected)="selected1($event)" [resizeOptions]="resizeOptions">
           </div>
           <div class="col">
             <p class="valign left-align">Upload an overview photo (25 - 30cm away)</p>
+            <p><b>{{uploadBtnRef1.value}}</b></p>
           </div>
         </div>
         <div class="row valing-wrapper">
-          <div class="col s3 center-align">
-            <img src="assets/camera-icon-small.png" />
+          <div class="col s4 center-align">
+            <img class="responsive-img img-btn-hover" [(src)]="img2" (click)="onUploadPhotoClick($event, uploadBtnRef2)"/>
+            <input style="display:none" #uploadBtnRef2 type="file" image-upload (imageSelected)="selected2($event)" [resizeOptions]="resizeOptions">
           </div>
           <div class="col">
-            <p class="valign left-align">Upload close up photo (10cm - away)</p>
+            <p class="valign left-align">Upload close up photo (~ 10cm away)</p>
+            <p><b>{{uploadBtnRef2.value}}</b></p>
           </div>
         </div>
       </div>

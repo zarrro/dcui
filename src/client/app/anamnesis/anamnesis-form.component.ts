@@ -20,6 +20,37 @@ import { Router } from '@angular/router';
 })
 export class AnamnesisFormComponent implements OnInit, AfterViewInit {
 
+  // image-upload
+  src: string = "";
+
+  img1: string = "assets/camera-icon-small.png";
+  img2: string = "assets/camera-icon-small.png";
+
+    resizeOptions: ResizeOptions = {
+        resizeMaxHeight: 160,
+        resizeMaxWidth: 160
+    };
+
+    selected1(imageResult: ImageResult) {
+        this.img1 = imageResult.resized
+            && imageResult.resized.dataURL
+            || imageResult.dataURL;
+    }
+
+    selected2(imageResult: ImageResult) {
+        this.img2 = imageResult.resized
+            && imageResult.resized.dataURL
+            || imageResult.dataURL;
+    }
+
+    onUploadPhotoClick(e: any, elref: any) {
+      // console.log('upload photo image was clicked');
+      // console.log(e);
+      // console.log(elref);
+      elref.click();
+    }
+  // end image upload
+
   // for animation
   isVisible:string;
 

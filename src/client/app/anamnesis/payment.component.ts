@@ -19,14 +19,14 @@ import { Router } from '@angular/router';
 })
 export class PaymentComponent implements AfterViewInit {
 
-  constructor(private router: Router) {}
-
   // for animation
   isVisible:string = 'no';
 
   //form fields
   email: string;
   confirmEmail: string;
+  
+  constructor(private router: Router) {}
 
   ngAfterViewInit() {
     this.isVisible = 'yes';
