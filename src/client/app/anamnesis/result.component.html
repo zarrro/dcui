@@ -1,0 +1,10 @@
+<div class="row page-wrap" [@isVisibleChanged]="isVisible">
+    <div class="card-panel">
+      <h5>{{result}}</h5>
+    </div>  
+</div>
+<!--
+<p>FORM: {{JSON.stringify(fRef.value)}}</p>
+<p>data: {{JSON.stringify(f)}}</p>
+-->
+<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>

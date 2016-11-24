@@ -9,22 +9,22 @@
         </div -->
         <div class="row valing-wrapper">
           <div class="col s4 center-align">
-            <img class="responsive-img img-btn-hover" [(src)]="img1" (click)="onUploadPhotoClick($event, uploadBtnRef1)"/>
-            <input style="display:none" #uploadBtnRef1 type="file" image-upload (imageSelected)="selected1($event)" [resizeOptions]="resizeOptions">
+            <img class="responsive-img img-btn-hover" [(src)]="form.image1Resized" (click)="onUploadPhotoClick($event, fileInput1)"/>
+            <input style="display:none" #fileInput1 type="file" image-upload (imageSelected)="selectImage1($event, fileInput1)" [resizeOptions]="resizeOptions">
           </div>
           <div class="col">
             <p class="valign left-align">Upload an overview photo (25 - 30cm away)</p>
-            <p><b>{{uploadBtnRef1.value}}</b></p>
+            <p><b>{{fileInput1.value}}</b></p>
           </div>
         </div>
         <div class="row valing-wrapper">
           <div class="col s4 center-align">
-            <img class="responsive-img img-btn-hover" [(src)]="img2" (click)="onUploadPhotoClick($event, uploadBtnRef2)"/>
-            <input style="display:none" #uploadBtnRef2 type="file" image-upload (imageSelected)="selected2($event)" [resizeOptions]="resizeOptions">
+            <img class="responsive-img img-btn-hover" [(src)]="form.image2Resized" (click)="onUploadPhotoClick($event, fileInput2)"/>
+            <input style="display:none" #fileInput2 type="file" image-upload (imageSelected)="selectImage2($event, fileInput2)" [resizeOptions]="resizeOptions">
           </div>
           <div class="col">
             <p class="valign left-align">Upload close up photo (~ 10cm away)</p>
-            <p><b>{{uploadBtnRef2.value}}</b></p>
+            <p><b>{{fileInput2.value}}</b></p>
           </div>
         </div>
       </div>
@@ -33,37 +33,37 @@
         <p class="valign left-align">Tick if you have any of these sympthoms</p>
         <div class="row">
           <p class="col s12 m6">
-            <input type="checkbox" id="checkbox_itchy" name="itchy" [(ngModel)]="itchy" />
+            <input type="checkbox" id="checkbox_itchy" name="itchy" [(ngModel)]="form.survey.itchy" />
             <label for="checkbox_itchy">Itching</label>
           </p>
           <p class="col s12 m6">
-            <input type="checkbox" id="checkbox_hurts" name="hurts" [(ngModel)]="hurts" />
+            <input type="checkbox" id="checkbox_hurts" name="hurts" [(ngModel)]="form.survey.hurts" />
             <label for="checkbox_hurts">Pain</label>
           </p>
         </div>
         <div class="row">
           <p class="col s12 m6">
-            <input type="checkbox" id="checkbox_hotfeel" name="hotfeel" [(ngModel)]="hotfeel" />
+            <input type="checkbox" id="checkbox_hotfeel" name="hotfeel" [(ngModel)]="form.survey.hotfeel" />
             <label for="checkbox_hotfeel">Hot feeling</label>
           </p>
           <p class="col s12 m6">
-            <input type="checkbox" id="checkbox_coldfeel" name="coldfeel" [(ngModel)]="coldfeel" />
+            <input type="checkbox" id="checkbox_coldfeel" name="coldfeel" [(ngModel)]="form.survey.coldfeel" />
             <label for="checkbox_coldfeel">Cold feeling</label>
           </p>
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea_desc" class="materialize-textarea" name="description" [(ngModel)]="description"></textarea>
-            <label for="textarea_desc">Describe location, color, size</label>
+            <textarea id="textarea_desc" class="materialize-textarea" name="description" [(ngModel)]="form.survey.description"></textarea>
+            <label style="{marginTop : 25px}" #descriptionLabel for="textarea_desc">Describe location, color, size</label>
           </div>
         </div>
       </div>
 
-      <h5>Descibe the history of the decease</h5>
+      <h5>Descibe the history of the disease</h5>
       <div class="section">
         <div class="row">
           <div class="input-field col s12">
-            <select id="select_duration" materialize="material_select" name="duration" [(ngModel)]="duration">
+            <select id="select_duration" materialize="material_select" name="duration" [(ngModel)]="form.survey.duration">
               <option value="Days">Days</option>
               <option value="Weeks">Weeks</option>
               <option value="Months">Months</option>
@@ -74,8 +74,8 @@
         </div>
         <div class="row">
           <div class="input-field col s12">
-            <textarea id="textarea_history" class="materialize-textarea" name="history" [(ngModel)]="history"></textarea>
-            <label for="textarea_history">Describe how it developed, include any previous treatment, existing diagnosis, known alergies</label>
+            <textarea style="{ margin-top: 25px }" id="textarea_history" class="materialize-textarea" name="history" [(ngModel)]="form.survey.history"></textarea>
+            <label #historyLabel for="textarea_history">Describe how it developed, include any previous treatment, existing diagnosis, known alergies</label>
           </div>
         </div>
       </div>
@@ -84,14 +84,14 @@
       <div class="section">
         <div class="row">
           <div class="input-field col s6">
-            <select id="select_sex" materialize="material_select" name="sex" [(ngModel)]="sex">
+            <select id="select_sex" materialize="material_select" name="sex" [(ngModel)]="form.survey.sex">
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
           </div>
           <div class="input-field col s6">
-            <input id="text_bio_age" type="text" class="validate" name="age" [(ngModel)]="age">
-            <label for="text_bio_age">Age</label>
+            <input id="text_bio_age" type="text" class="validate" name="age" [(ngModel)]="form.survey.age">
+            <label #ageLabel for="text_bio_age">Age</label>
           </div>
         </div>
       </div>
