@@ -61,16 +61,18 @@
 
       <h5>Descibe the history of the disease</h5>
       <div class="section">
-        <div class="row">
-          <div class="input-field col s12">
+        <div class="row valign-wrapper">
+            <div class="col s6">
+              <label for="select_duration" class="valign">For how long have you had this condition?</label>
+            </div>
+            <div class="input-field inline col s6">
             <select id="select_duration" materialize="material_select" name="duration" [(ngModel)]="form.survey.duration">
               <option value="Days">Days</option>
               <option value="Weeks">Weeks</option>
               <option value="Months">Months</option>
               <option value="Years">Years</option>
             </select>
-            <label for="select_duration">For how long have you had this condition?</label>
-          </div>
+            </div>
         </div>
         <div class="row">
           <div class="input-field col s12">

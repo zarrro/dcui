@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit, ElementRef, trigger, style, transition, animate, ViewChild, ContentChild, Renderer } from '@angular/core';
-import { AnamnesisService } from './anamnesis.service';
 import { Router } from '@angular/router';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { AnamnesisFormService } from './anamnesis-form.service';

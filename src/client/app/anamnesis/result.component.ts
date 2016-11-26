@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   moduleId: module.id, // this is needed to correctly resolve paths to templateUrl and Css
   templateUrl: 'result.component.html',
-  selector: 'resul't,
+  selector: 'result',
   animations: [
     trigger('isVisibleChanged', [
       transition('no => yes', [
