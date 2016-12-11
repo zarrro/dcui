@@ -1,5 +1,5 @@
 <div class="row" [@isVisibleChanged]="isVisible">
-  <form class="col s8 offset-s2" #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
+  <form class="col s8 offset-s2" #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef)">
     <div class="card-panel">
       <h5>Upload a photo</h5>
       <div class="section">
@@ -10,7 +10,7 @@
         <div class="row valing-wrapper">
           <div class="col s4 center-align">
             <img class="responsive-img img-btn-hover" [(src)]="form.image1Resized" (click)="onUploadPhotoClick($event, fileInput1)"/>
-            <input style="display:none" #fileInput1 type="file" image-upload (imageSelected)="selectImage1($event, fileInput1)" [resizeOptions]="resizeOptions">
+            <input id="image1" name="image1" style="display:none" #fileInput1 type="file" required image-upload (imageSelected)="selectImage1($event, fileInput1)" [resizeOptions]="resizeOptions" ngModel>
           </div>
           <div class="col">
             <p class="valign left-align">Upload an overview photo (25 - 30cm away)</p>
@@ -20,7 +20,7 @@
         <div class="row valing-wrapper">
           <div class="col s4 center-align">
             <img class="responsive-img img-btn-hover" [(src)]="form.image2Resized" (click)="onUploadPhotoClick($event, fileInput2)"/>
-            <input style="display:none" #fileInput2 type="file" image-upload (imageSelected)="selectImage2($event, fileInput2)" [resizeOptions]="resizeOptions">
+            <input id="image2" name="image2" style="display:none" #fileInput2 type="file" required image-upload (imageSelected)="selectImage2($event, fileInput2)" [resizeOptions]="resizeOptions" ngModel>
           </div>
           <div class="col">
             <p class="valign left-align">Upload close up photo (~ 10cm away)</p>
@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <h5>Descibe the history of the disease</h5>
+      <h5>Describe the history of the disease</h5>
       <div class="section">
         <div class="row valign-wrapper">
             <div class="col s6">
@@ -92,19 +92,22 @@
           </select>
           </div>
           <div class="input-field col s6">
-            <input id="text_bio_age" type="text" class="validate" name="age" [(ngModel)]="form.survey.age">
-            <label #ageLabel for="text_bio_age">Age</label>
+            <input #age id="age" type="text" required (keypress)="_keyPress($event)" data-err="kur" numberValidRange="5-105" name="age" [(ngModel)]="form.survey.age">
+            <label #ageLabel for="age" id="age_label">Age</label>
           </div>
+          <!-- div>
+            Age error: {{ formErrors.age }}
+          </div -->
         </div>
       </div>
       <div class="row" style="padding-top: 20px">
-        <button type="submit" class="btn col s6 offset-s3 waves-effect waves-light"> > NEXT STEP: PAYMENT</button>
+        <button type="submit" (click)="submitBtnClicked()" class="btn col s6 offset-s3 waves-effect waves-light"> > NEXT STEP: PAYMENT</button>
       </div>
     </div>
   </form>
 </div>
 <!--
+numberValidRange="5-105"
 <p>FORM: {{JSON.stringify(fRef.value)}}</p>
 <p>data: {{JSON.stringify(f)}}</p>
 -->
-<div class="error" *ngIf="errorMessage">{{errorMessage}}</div>
