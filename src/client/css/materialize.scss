@@ -1,6 +1,23 @@
 // refer the materialize scss from the npm package
 @import "../../../node_modules/materialize-css/sass/ghpages-materialize.scss";
 
+// defined by color pallete created with https://www.materialpalette.com/blue/pink
+$divider-color: #BDBDBD;
+
+main {
+  flex: 1 0 auto;
+}
+
+// override padding-left: 300px set in node_modules\materialize-css\sass\style.scss
+header, main, footer {
+  padding-left: 0px;
+}
+
+// peevs: default nav has box shadow, i like it flat
+nav {
+  box-shadow: none;
+}
+
 .navbar-btn {
   border: 1px solid $navbar-font-color;
   color: $navbar-font-color;
@@ -18,13 +35,8 @@
   flex-direction: column;
 }
 
-main {
-  flex: 1 0 auto;
-}
-
-// override padding-left: 300px set in node_modules\materialize-css\sass\style.scss
-header, main, footer {
-  padding-left: 0px;
+.devider {
+  background-color: $divider-color;
 }
 
 .err {

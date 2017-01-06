@@ -21,7 +21,7 @@ export class NumberValidRangeDirective implements Validator, OnChanges {
     if (change) {
       const val: string = change.currentValue;
       const args: string[] = val.split('-');
-      this.valFn = numValidator(args[0], args[1]);
+      this.valFn = numValidator(parseInt(args[0]), parseInt(args[1]));
     } else {
       this.valFn = Validators.nullValidator;
     }
@@ -39,11 +39,11 @@ export function numValidator(min: number, max: number): ValidatorFn {
     };
     const numVal: number = parseInt(val);
     if (numVal < min) {
-      return { 'minNumber': min }
+      return { 'minNumber': min };
     };
     if (numVal > max) {
-      return { 'maxNumber': max }
+      return { 'maxNumber': max };
     }
     return null; // number is OK
-  }
+  };
 }

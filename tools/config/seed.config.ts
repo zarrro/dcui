@@ -40,7 +40,8 @@ export class SeedConfig {
 
   /**
    * The current environment.
-   * The default environment is `dev`, which can be overriden by the `--config-env ENV_NAME` flag when running `npm start`.
+   * The default environment is `dev`, which can be overriden by the `--config-env ENV_NAME` flag when running 
+   * `npm start`.
    */
   ENV = getEnvironment();
 
@@ -328,7 +329,8 @@ export class SeedConfig {
       '@angular/forms': 'node_modules/@angular/forms/bundles/forms.umd.js',
       '@angular/http': 'node_modules/@angular/http/bundles/http.umd.js',
       '@angular/platform-browser': 'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
-      '@angular/platform-browser-dynamic': 'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      '@angular/platform-browser-dynamic':
+        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
       '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
       '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
       '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',

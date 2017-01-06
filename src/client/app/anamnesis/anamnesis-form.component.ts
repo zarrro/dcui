@@ -1,6 +1,7 @@
-import { Component, OnInit, AfterViewInit, ElementRef, trigger, style, transition, animate, ViewChild, ContentChild, Renderer } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, trigger, style, transition, animate, ViewChild,
+  Renderer } from '@angular/core';
 import { Router } from '@angular/router';
-import { Http, Headers, RequestOptions } from '@angular/http';
+import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import { AnamnesisFormService } from './anamnesis-form.service';
 import 'rxjs/add/operator/toPromise';
@@ -36,9 +37,12 @@ export class AnamnesisFormComponent implements AfterViewInit {
   errorMessage: string;
   JSON: any;
   formState: string;
+  submitClicked: boolean;
 
-  formErrors = {
+  formErrors: {[key: string]: string} = {
     'age': '',
+    'history': '',
+    'description': '',
     'image1': '',
     'image2': ''
   };
@@ -47,29 +51,33 @@ export class AnamnesisFormComponent implements AfterViewInit {
   // It's optional. For some error keys value may be needed
   //   (e.g. for minNumber to show what's the current limit)
   // for other keys, values should not be included in the message
-  //   (e.g. required has value "true", which will be odd for user message)
- 
-  validationMessages = {
+  // (e.g. required has value "true", which will be odd for user message)
+
+  validationMessages:{[key: string]:{[key: string]: string}} = {
     'age': {
       'required': 'Age is required.',
       'invalidNumber': 'Invalid number',
       'minNumber': 'Minimal age is: ###',
       'maxNumber': 'Maximal age is: ###',
-      'min': "Minimal age",
-      'max': "Maximal age"
+      'min': 'Minimal age',
+      'max': 'Maximal age'
     },
     'image1': {
       'required': 'Overview photo is required.',
     },
     'image2': {
       'required': 'Close up photo is required.',
+    },
+    'history': {
+      'required': 'History of the decease is required.',
+    },
+    'description': {
+      'required': 'Description of your condition is required.',
     }
   };
 
   ngFormInstance: NgForm;
   @ViewChild('fRef') currentNgForm: NgForm;
-
-  @ViewChild('age') ageInput: ElementRef;
   @ViewChild('ageLabel') ageLabel: ElementRef;
   @ViewChild('historyLabel') historyLabel: ElementRef;
   @ViewChild('descriptionLabel') descriptionLabel: ElementRef;
@@ -85,7 +93,7 @@ export class AnamnesisFormComponent implements AfterViewInit {
     this.updateTextLabelsState();
 
     // disable browser's built in validation errors bubbles
-    $("input").on("invalid", function(event:any) {
+    $('input').on('invalid', function(event:any) {
       event.preventDefault();
     });
   }
@@ -102,18 +110,19 @@ export class AnamnesisFormComponent implements AfterViewInit {
     }
   }
 
-  onValueChanged(data?: any, submitClicked?: boolean) {
+  onValueChanged(data?: any) {
     if (!this.ngFormInstance) { return; }
     const form = this.ngFormInstance.form;
-    
+
     for (const field in this.formErrors) {
       // clear previous error message (if any)
       this.formErrors[field] = '';
       $('#' + field + 'errmsg').remove();
 
       const control = form.get(field);
+
       if(control) {
-        if ((control.dirty || submitClicked) && !control.valid) {
+        if ((control.dirty || this.submitClicked) && !control.valid) {
           const messages = this.validationMessages[field];
           // there might be more than one errors for the control, but we show just the 1st one
           let key: string;
@@ -122,15 +131,15 @@ export class AnamnesisFormComponent implements AfterViewInit {
           }
           // replace the placeholders (if any) with the actual value of the error key
           this.formErrors[field] += messages[key].replace('###', control.errors[key]);
-          let el: any = $('#' + field)
+          let el: any = $('#' + field);
           $('#' + field).after('<p id="' + field + 'errmsg" class="err">' + this.formErrors[field] + '</p>');
           el.removeClass('valid');
           el.addClass('invalid');
         } else if (control.dirty && control.valid) {
-          let el: any = $('#' + field)
+          let el: any = $('#' + field);
           el.removeClass('invalid');
           el.addClass('valid');
-        } else if (!control.dirty && !submitClicked) {
+        } else if (!control.dirty && !this.submitClicked) {
           // cleanup, just in case form is reloaded and the css remain
           $('#' + field).removeClass('invalid valid');
         }
@@ -157,19 +166,32 @@ export class AnamnesisFormComponent implements AfterViewInit {
   }
 
   submitBtnClicked() {
-    console.log("submit button is clicked");
+    console.log('submit button is clicked');
     // $('#text_bio_age_label').attr('data-error', 'age is required');
     // $('#text_bio_age').addClass('invalid');
-    this.onValueChanged(undefined, true);
+    this.submitClicked = true;
+    this.onValueChanged(undefined);
   }
 
   onSubmit(f: NgForm) {
-    this.isVisible = 'no';
-    console.log(f);
-    if(f.valid) {
+    // file input fields for the images can't be validated as part of the ngForm.
+    // As a workaround check the model values
+    if (f.valid && this.form.image1 && this.form.image2) {
+      this.isVisible = 'no';
+      console.log(f);
       setTimeout(() => { this.router.navigate(['payment']); }, 300);
     } else {
-      console.log("form is not valid");
+      console.log('form is not valid');
+    }
+  }
+
+  onKeyPressFilterNonDigit(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+    let inputChar = String.fromCharCode(event.charCode);
+    // console.log(inputChar, e.charCode);
+    if (!pattern.test(inputChar)) {
+      // invalid character, prevent input
+      event.preventDefault();
     }
   }
 
@@ -183,16 +205,6 @@ export class AnamnesisFormComponent implements AfterViewInit {
     }
     if (this.form.survey.description) {
       this.renderer.setElementClass(this.descriptionLabel.nativeElement, 'active', true);
-    }
-  }
-
-  _keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-    let inputChar = String.fromCharCode(event.charCode);
-    // console.log(inputChar, e.charCode);
-    if (!pattern.test(inputChar)) {
-      // invalid character, prevent input
-      event.preventDefault();
     }
   }
 }
