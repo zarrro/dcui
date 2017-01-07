@@ -207,17 +207,4 @@ export class AnamnesisFormComponent implements AfterViewInit {
       this.renderer.setElementClass(this.descriptionLabel.nativeElement, 'active', true);
     }
   }
-
-  // make text fields' labels active, if corresponding fields have values already (e.g. when navigate back to the form)
-  private updateTextLabelsState() {
-    if (this.form.survey.age) {
-      this.renderer.setElementClass(this.ageLabel.nativeElement, 'active', true);
-    }
-    if (this.form.survey.history) {
-      this.renderer.setElementClass(this.historyLabel.nativeElement, 'active', true);
-    }
-    if (this.form.survey.description) {
-      this.renderer.setElementClass(this.descriptionLabel.nativeElement, 'active', true);
-    }
-  }
 }
