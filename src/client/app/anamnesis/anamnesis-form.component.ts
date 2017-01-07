@@ -5,6 +5,7 @@ import { Http } from '@angular/http';
 import { NgForm } from '@angular/forms';
 import { AnamnesisFormService } from './anamnesis-form.service';
 import 'rxjs/add/operator/toPromise';
+import { ImageResult, ResizeOptions } from 'ng2-imageupload';
 
 declare var $: any;
 

@@ -1,7 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
 
-declare var $: any;
-
 /**
  * This class represents the lazy loaded HomeComponent.
  */
@@ -14,7 +12,7 @@ declare var $: any;
 export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit() {
-    // require('./../../../js/modernizr.js');
+    require('./../../../js/modernizr.js');
     let initheadline = require('./../../../js/init.js');
     initheadline();
   }
