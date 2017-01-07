@@ -49,3 +49,6 @@ gulpfile.js.map
 # OS X trash files
 .DS_Store
 
+#misc - added by peevs
+dcui.sublime*
+npm-debug.log.*

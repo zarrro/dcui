@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+
+declare var $: any;
+
 /**
  * This class represents the lazy loaded HomeComponent.
  */
 @Component({
   moduleId: module.id,
   selector: 'sd-home',
-  templateUrl: 'home.component.html',
-  styleUrls: ['home.component.css'],
+  templateUrl: 'home.component.html'
 })
 
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
 
+  ngAfterViewInit() {
+    // require('./../../../js/modernizr.js');
+    let initheadline = require('./../../../js/init.js');
+    initheadline();
+  }
 }

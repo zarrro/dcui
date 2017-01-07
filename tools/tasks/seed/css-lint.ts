@@ -7,7 +7,8 @@ import * as reporter from 'postcss-reporter';
 import * as stylelint from 'stylelint';
 import { join } from 'path';
 
-import { APP_ASSETS, APP_SRC, BROWSER_LIST, CSS_SRC, ENV, DEPENDENCIES, ENABLE_SCSS,  COLOR_GUARD_WHITE_LIST} from '../../config';
+import { APP_ASSETS, APP_SRC, BROWSER_LIST, CSS_SRC, ENV, DEPENDENCIES, ENABLE_SCSS,
+  COLOR_GUARD_WHITE_LIST} from '../../config';
 
 const plugins = <any>gulpLoadPlugins();
 

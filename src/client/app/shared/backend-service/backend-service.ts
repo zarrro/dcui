@@ -51,6 +51,4 @@ export class BackendService {
     console.log('post body ' + body);
     return this.http.post(this.backendURL + '/' + path, body, ro).toPromise();
   }
-
-
 }
