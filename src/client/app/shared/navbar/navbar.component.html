@@ -8,12 +8,14 @@
   <nav role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Dermal Clinic</a>
       <ul class="right hide-on-med-and-down">
-        <li><a>Home</a></li>
-        <li><a>About us</a></li>
-        <li><a>Blog</a></li>
+        <li><a class="waves-effect waves-light btn-flat navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Make Request</a></li>
+        <li><a>Check Request</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#team">The Team</a></li>
+        <!--
         <li><a *ngIf="!authenticated" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">My Account</a></li>
         <li><a *ngIf="authenticated" materialize="dropdown" class="dropdown-button" href="#!" data-activates="user-menu">Welcome, {{username}}!<i class="material-icons right">arrow_drop_down</i></a></li>
-        <li><a class="waves-effect waves-light btn-flat navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Ask dermatologist</a></li>
+        -->
       </ul>
     </div>
   </nav>
