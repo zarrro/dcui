@@ -6,17 +6,29 @@
 </ul>
 <div class="navbar-fixed">
   <nav role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" class="brand-logo" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Dermal Clinic</a>
+    <div class="nav-wrapper container">
+      <a id="logo-container" class="brand-logo" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Dermal Clinic</a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="waves-effect waves-light btn-flat navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Make Request</a></li>
+        <li><a class="waves-effect waves-light btn-flat navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']"
+            [routerLinkActiveOptions]="{exact:true}">Make Request</a></li>
         <li><a>Check Request</a></li>
+        <li><a href="#intro">Service</a></li>
+        <li><a href="#team">Team</a></li>
         <li><a href="#blog">Blog</a></li>
-        <li><a href="#team">The Team</a></li>
         <!--
         <li><a *ngIf="!authenticated" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">My Account</a></li>
         <li><a *ngIf="authenticated" materialize="dropdown" class="dropdown-button" href="#!" data-activates="user-menu">Welcome, {{username}}!<i class="material-icons right">arrow_drop_down</i></a></li>
         -->
       </ul>
+      <ul id="nav-mobile" class="side-nav">
+        <li><a class="waves-effect waves-light btn-flat navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']"
+            [routerLinkActiveOptions]="{exact:true}">Make Request</a></li>
+        <li><a>Check Request</a></li>
+        <li><a href="#intro">Service</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#blog">Blog</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu material-icons">menu</i></a>
     </div>
   </nav>
 </div>

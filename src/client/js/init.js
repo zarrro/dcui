@@ -1,8 +1,5 @@
 var exports = (function ($) {
 
-	$('.button-collapse').sideNav();
-	$('.scrollspy').scrollSpy();
-
 	/*** Animate word ***/
 
 	//set animation timing
@@ -22,6 +19,10 @@ var exports = (function ($) {
 	
 	// the initHeadline functions
 	return function() {
+
+		$('.button-collapse').sideNav();
+		$('.scrollspy').scrollSpy();
+
 		singleLetters($('.cd-headline.letters').find('b'));
 		animateHeadline($('.cd-headline'));
 	}
