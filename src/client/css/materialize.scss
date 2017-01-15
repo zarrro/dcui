@@ -19,9 +19,27 @@ nav {
 }
 
 .navbar-btn {
-  border: 1px solid $navbar-font-color;
+  // copy paste from .btn
+  border: $button-border;
+  border-radius: $button-radius;
+  display: inline-block;
+  height: $button-height;
+  line-height: $button-height;
+  padding: $button-padding;
+  text-transform: uppercase;
+  vertical-align: middle;
+
+  // border: 1px solid $navbar-font-color;
   color: $navbar-font-color;
   background-color: $primary-color;
+  box-shadow: 0 0 1px 1px #fff;
+  margin-right: 20px;
+}
+
+.navbar-btn:hover {
+  background-color: $primary-color;
+  box-shadow: none ;
+  font-weight: 500;
 }
 
 .img-btn-hover:hover {
