@@ -26,12 +26,17 @@
 
 #intro, #blog, #team {padding-top: 4rem;}
 
-
-#index-banner {
+.top-banner {
     min-height: 632px;
     max-height: 864px;
     position: relative;
-    background-color: #2196F3;
+    z-index: -1;
+    background: linear-gradient(#2196F3, #FCFCFC);
+}
+
+.top-container {
+    position: relative;
+    top: -500px;
 }
 
 #nav_f{
