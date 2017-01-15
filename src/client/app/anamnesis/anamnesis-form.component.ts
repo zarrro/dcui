@@ -1,8 +1,10 @@
-import { Component, AfterViewInit, ElementRef, trigger, style, transition, animate, ViewChild,
-  Renderer } from '@angular/core';
+import {
+  Component, AfterViewInit, ElementRef, trigger, style, transition, animate, ViewChild,
+  Renderer
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Http } from '@angular/http';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup } from '@angular/forms';
 import { AnamnesisFormService } from './anamnesis-form.service';
 import 'rxjs/add/operator/toPromise';
 import { ImageResult, ResizeOptions } from 'ng2-imageupload';
@@ -40,7 +42,7 @@ export class AnamnesisFormComponent implements AfterViewInit {
   formState: string;
   submitClicked: boolean;
 
-  formErrors: {[key: string]: string} = {
+  formErrors: { [key: string]: string } = {
     'age': '',
     'history': '',
     'description': '',
@@ -54,7 +56,7 @@ export class AnamnesisFormComponent implements AfterViewInit {
   // for other keys, values should not be included in the message
   // (e.g. required has value "true", which will be odd for user message)
 
-  validationMessages:{[key: string]:{[key: string]: string}} = {
+  validationMessages: { [key: string]: { [key: string]: string } } = {
     'age': {
       'required': 'Age is required.',
       'invalidNumber': 'Invalid number',
@@ -77,7 +79,9 @@ export class AnamnesisFormComponent implements AfterViewInit {
     }
   };
 
+  fieldOnFocus: string;
   ngFormInstance: NgForm;
+
   @ViewChild('fRef') currentNgForm: NgForm;
   @ViewChild('ageLabel') ageLabel: ElementRef;
   @ViewChild('historyLabel') historyLabel: ElementRef;
@@ -93,57 +97,75 @@ export class AnamnesisFormComponent implements AfterViewInit {
     this.isVisible = 'yes';
     this.updateTextLabelsState();
 
+    // selects the fields which needs invalid style to be applied
+    let textFieldsSelector = 'input[type="text"], textarea';
+
     // disable browser's built in validation errors bubbles
-    $('input').on('invalid', function(event:any) {
+    $(textFieldsSelector).on('invalid', event => {
       event.preventDefault();
+    });
+
+    // attach function to the "valid" class from input eleement when it looses focus
+    $(textFieldsSelector).on('blur', event => {
+      $(event.target).removeClass('valid');
+      // cleanup fieldOnFocus only if another one is not already onFocus
+      if(this.fieldOnFocus === event.target.name) {
+        this.fieldOnFocus = '';
+      }
+    });
+
+    // attach function to update current field on focus
+    $(textFieldsSelector).on('focus', event => {
+      this.fieldOnFocus = event.target.name;
     });
   }
 
   ngAfterViewChecked() {
-    this.formChanged();
-  }
-
-  formChanged() {
+    // process form changes
     if (this.currentNgForm === this.ngFormInstance) { return; }
     this.ngFormInstance = this.currentNgForm;
+
     if (this.ngFormInstance) {
-      this.ngFormInstance.valueChanges.subscribe(data => this.onValueChanged(data));
+      this.ngFormInstance.valueChanges.subscribe(data => {
+        this.processFieldValidationStyle(this.fieldOnFocus, this.ngFormInstance.form);
+      });
     }
   }
 
-  onValueChanged(data?: any) {
+  processValidationStyleAllFields() {
     if (!this.ngFormInstance) { return; }
     const form = this.ngFormInstance.form;
 
     for (const field in this.formErrors) {
-      // clear previous error message (if any)
-      this.formErrors[field] = '';
-      $('#' + field + 'errmsg').remove();
+      this.processFieldValidationStyle(field, form);
+    }
+  }
 
-      const control = form.get(field);
+  processFieldValidationStyle(field: string, form: FormGroup) {
+    this.formErrors[field] = '';
+    $('#' + field + 'errmsg').remove();
 
-      if(control) {
-        if ((control.dirty || this.submitClicked) && !control.valid) {
-          const messages = this.validationMessages[field];
-          // there might be more than one errors for the control, but we show just the 1st one
-          let key: string;
-          for (key in control.errors) {
-            break;
-          }
-          // replace the placeholders (if any) with the actual value of the error key
-          this.formErrors[field] += messages[key].replace('###', control.errors[key]);
-          let el: any = $('#' + field);
-          $('#' + field).after('<p id="' + field + 'errmsg" class="err">' + this.formErrors[field] + '</p>');
-          el.removeClass('valid');
-          el.addClass('invalid');
-        } else if (control.dirty && control.valid) {
-          let el: any = $('#' + field);
-          el.removeClass('invalid');
-          el.addClass('valid');
-        } else if (!control.dirty && !this.submitClicked) {
-          // cleanup, just in case form is reloaded and the css remain
-          $('#' + field).removeClass('invalid valid');
+    const control = form.get(field);
+
+    if (control) {
+      if ((control.dirty || this.submitClicked) && !control.valid) {
+        const messages = this.validationMessages[field];
+        // there might be more than one errors for the control, but we show just the 1st one
+        let key: string;
+        for (key in control.errors) {
+          break;
         }
+        // replace the placeholders (if any) with the actual value of the error key
+        this.formErrors[field] += messages[key].replace('###', control.errors[key]);
+        let el: any = $('#' + field);
+        $('#' + field).after('<p id="' + field + 'errmsg" class="err">' + this.formErrors[field] + '</p>');
+        el.addClass('invalid');
+      } else if (control.dirty && control.valid) {
+        let el: any = $('#' + field);
+        el.removeClass('invalid');
+      } else if (!control.dirty && !this.submitClicked) {
+        // cleanup, just in case form is reloaded and the css remain
+        $('#' + field).removeClass('invalid');
       }
     }
   }
@@ -167,11 +189,8 @@ export class AnamnesisFormComponent implements AfterViewInit {
   }
 
   submitBtnClicked() {
-    console.log('submit button is clicked');
-    // $('#text_bio_age_label').attr('data-error', 'age is required');
-    // $('#text_bio_age').addClass('invalid');
     this.submitClicked = true;
-    this.onValueChanged(undefined);
+    this.processValidationStyleAllFields();
   }
 
   onSubmit(f: NgForm) {
