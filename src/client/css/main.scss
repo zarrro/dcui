@@ -27,23 +27,23 @@
 #intro, #blog, #team {padding-top: 4rem;}
 
 .top-banner {
-    // min-height: 632px;
-    // max-height: 864px;
-    // position: relative;
+    min-height: 632px;
+    max-height: 864px;
+    position: relative;
     z-index: -1;
-    background: linear-gradient(#2196F3, #FCFCFC), url('/dist/dev/assets/hands-picture.jpg') center center no-repeat;
+    background: url('/dist/dev/assets/hands-picture.jpg') center center no-repeat;
     background-size: cover;
 
-    // &:before {
-    // content: '';
-	// position: absolute;
-	// top: 0;
-	// right: 0;
-	// bottom: 0;
-	// left: 0;
-	// background-image: linear-gradient(#2196F3, #FCFCFC);
-	// opacity: .6; 
-    //  }
+    &:before {
+    content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-image: linear-gradient(#2196F3, #FCFCFC);
+	opacity: .6; 
+  }
 }
 
 .top-container {
