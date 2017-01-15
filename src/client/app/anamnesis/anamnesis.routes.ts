@@ -7,17 +7,14 @@ import { LoggedInGuard } from '../auth/logged-in-guard';
 export const AnamnesisRoutes: Route[] = [
   {
     path: 'anamnesisForm',
-    component: AnamnesisFormComponent,
-    canActivate: [LoggedInGuard]
+    component: AnamnesisFormComponent
   },
   {
     path: 'payment',
-    component: PaymentComponent,
-    canActivate: [LoggedInGuard]
+    component: PaymentComponent
   },
   {
     path: 'result/:uuid',
-    component: ResultComponent,
-    canActivate: [LoggedInGuard]
+    component: ResultComponent
   }
 ];
