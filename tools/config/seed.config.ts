@@ -330,20 +330,21 @@ export class SeedConfig {
       '@angular/http': 'node_modules/@angular/http/bundles/http.umd.js',
       '@angular/platform-browser': 'node_modules/@angular/platform-browser/bundles/platform-browser.umd.js',
       '@angular/platform-browser-dynamic':
-        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
       '@angular/router': 'node_modules/@angular/router/bundles/router.umd.js',
       '@angular/common/testing': 'node_modules/@angular/common/bundles/common-testing.umd.js',
       '@angular/compiler/testing': 'node_modules/@angular/compiler/bundles/compiler-testing.umd.js',
       '@angular/core/testing': 'node_modules/@angular/core/bundles/core-testing.umd.js',
       '@angular/http/testing': 'node_modules/@angular/http/bundles/http-testing.umd.js',
       '@angular/platform-browser/testing':
-        'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
+      'node_modules/@angular/platform-browser/bundles/platform-browser-testing.umd.js',
       '@angular/platform-browser-dynamic/testing':
-        'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+      'node_modules/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
       '@angular/router/testing': 'node_modules/@angular/router/bundles/router-testing.umd.js',
 
       'rxjs/*': 'node_modules/rxjs/*',
       'app/*': '/app/*',
+      'js/*':'src/client/js/*',
       // For test config
       'dist/dev/*': '/base/dist/dev/*',
       '*': 'node_modules/*'
@@ -382,8 +383,16 @@ export class SeedConfig {
       join(this.PROJECT_ROOT, 'node_modules', '@angular', '*', 'package.json')
     ],
     paths: {
-      [`${this.TMP_DIR}/*`]: `${this.TMP_DIR}/*`,
+      [join(this.TMP_DIR, this.BOOTSTRAP_DIR, '*')]: `${this.TMP_DIR}/${this.BOOTSTRAP_DIR}/*`,
+      'dist/tmp/node_modules/*': 'dist/tmp/node_modules/*',
+      'js/*':'src/client/js/*',
       '*': 'node_modules/*'
+    },
+    map: {
+      'materialize-css': 'materialize-css',
+      'materialize': 'angular2-materialize',
+      'angular2-materialize': 'angular2-materialize',
+      'ng2-imageupload': 'ng2-imageupload'
     },
     packages: {
       '@angular/common': {
@@ -424,6 +433,19 @@ export class SeedConfig {
       },
       'rxjs': {
         defaultExtension: 'js'
+      },
+      'materialize-css': {
+        'format': 'global',
+        'main': 'dist/js/materialize',
+        'defaultExtension': 'js'
+      },
+      'angular2-materialize': {
+        'main': 'dist/index',
+        'defaultExtension': 'js'
+      },
+      'ng2-imageupload': {
+        'main': 'index',
+        'defaultExtension': 'js'
       }
     }
   };

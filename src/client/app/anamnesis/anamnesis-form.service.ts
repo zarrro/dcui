@@ -22,8 +22,8 @@ export class AnamnesisFormService {
 	image1: File;
 	image2: File;
 
-	image1Resized: any = 'assets/camera-icon-small.png';
-	image2Resized: any = 'assets/camera-icon-small.png';
+	image1Resized: any = 'img/camera-icon-small.png';
+	image2Resized: any = 'img/camera-icon-small.png';
 
 	survey: Survey = new Survey();
 }

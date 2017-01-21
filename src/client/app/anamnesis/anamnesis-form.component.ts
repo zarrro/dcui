@@ -101,12 +101,12 @@ export class AnamnesisFormComponent implements AfterViewInit {
     let textFieldsSelector = 'input[type="text"], textarea';
 
     // disable browser's built in validation errors bubbles
-    $(textFieldsSelector).on('invalid', event => {
+    $(textFieldsSelector).on('invalid', (event:any) => {
       event.preventDefault();
     });
 
     // attach function to the "valid" class from input eleement when it looses focus
-    $(textFieldsSelector).on('blur', event => {
+    $(textFieldsSelector).on('blur', (event:any) => {
       $(event.target).removeClass('valid');
       // cleanup fieldOnFocus only if another one is not already onFocus
       if(this.fieldOnFocus === event.target.name) {
@@ -115,7 +115,7 @@ export class AnamnesisFormComponent implements AfterViewInit {
     });
 
     // attach function to update current field on focus
-    $(textFieldsSelector).on('focus', event => {
+    $(textFieldsSelector).on('focus', (event:any) => {
       this.fieldOnFocus = event.target.name;
     });
   }

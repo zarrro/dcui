@@ -12,8 +12,8 @@ import { Component, AfterViewInit } from '@angular/core';
 export class HomeComponent implements AfterViewInit {
 
   ngAfterViewInit() {
-    require('./../../../js/modernizr.js');
-    let initheadline = require('./../../../js/init.js');
+    require('js/modernizr.js');
+    let initheadline = require('js/init.js');
     initheadline();
   }
 }
