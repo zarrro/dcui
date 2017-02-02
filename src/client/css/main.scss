@@ -9,6 +9,39 @@
     margin-left: -15em;
 }
 
+/* Made by peevs */
+
+/* home page */
+#how-it-works-icon {
+    width: 74px;
+    height: 74px;
+    background-color: #2196F3;
+    -webkit-mask-image: url('../img/nurse.png');
+}
+
+/* home page */
+#what-you-get {
+    width: 78px;
+    height: 69px;
+    background-color: #2196F3;
+    -webkit-mask-image: url('../img/check-mark.png');
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transform: translate(0, 0);
+}
+
+.fa-connectdevelop:before {
+    content: "\f20e";
+}
+
+
 /* Custom Stylesheet */
 /**
  *
@@ -31,9 +64,9 @@
     max-height: 864px;
     position: relative;
     z-index: -1;
-    background: url('../img/hands-picture.jpg') center center no-repeat;
+    /* background: url('../img/hands-picture.jpg') center center no-repeat; */
     background-size: cover;
-
+/*
     &:before {
     content: '';
 	position: absolute;
@@ -43,7 +76,7 @@
 	left: 0;
 	background-image: linear-gradient(#2196F3, #FCFCFC);
 	opacity: .6; 
-  }
+  } */
 }
 
 .top-container {
