@@ -34,11 +34,13 @@
 // ==========================================================================
 
 // colors are selected by https://www.materialpalette.com/blue/pink
-$primary-color: color("blue","base") !default;
+// $primary-color: color("blue","base") !default;
+$primary-color: #00aeef;
 $primary-color-light: color("blue", "lighten-4") !default;
 $primary-color-dark: color("blue", "darken-2") !default;
 
-$secondary-color: color("blue", "accent-2") !default;
+// $secondary-color: color("green", "accent-3") !default;
+$secondary-color: #7ed026;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 $link-color: color("pink", "accent-4") !default;
@@ -232,7 +234,7 @@ $element-bottom-margin: ($gutter-width*2)/3 !default;
 $navbar-height: 64px !default;
 $navbar-height-mobile: 56px !default;
 $navbar-font-size: 1rem !default;
-$navbar-font-color: $primary-color-text !default;
+$navbar-font-color: $primary-color !default;
 $navbar-brand-font-size: 2.1rem !default;
 
 // 14. Side Navigation

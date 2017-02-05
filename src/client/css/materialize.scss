@@ -4,6 +4,10 @@
 // defined by color pallete created with https://www.materialpalette.com/blue/pink
 $divider-color: #BDBDBD;
 
+// overrides and extensions on the materialize-css package
+
+// general
+
 main {
   flex: 1 0 auto;
 }
@@ -13,14 +17,16 @@ header, main, footer {
   padding-left: 0px;
 }
 
-// peevs: default nav has box shadow, i like it flat
+// navbar
+
 nav {
   box-shadow: none;
+  color: $primary-color;
+  background-color: $primary-color-text;
 }
 
-// peevs: override default materialize color
-#index-banner {
-  background-color: color("blue", "base");
+nav ul a {
+    font-size: 1.2rem;
 }
 
 .navbar-btn {
@@ -66,4 +72,44 @@ nav {
   color: #F44336;
   opacity: 1;
   margin: 0px 0px 0px 0px;
+}
+
+.top-banner {
+    min-height: 580px;
+    max-height: 790px;
+    position: relative;
+    z-index: -1;
+    background-color: $primary-color;
+    background-size: cover;
+}
+
+.top-container {
+    position: relative;
+    top: -500px;
+}
+
+// home page
+
+// send your case icon
+#how-it-works-icon {
+    width: 87px;
+    height: 100px;
+    background-color: $primary-color;
+    -webkit-mask-image: url('../img/face-dermal-issue.png');
+}
+
+// get help today icon
+#what-you-get {
+    width: 100px;
+    height: 100px;
+    background-color: $primary-color;
+    -webkit-mask-image: url('../img/nurse_3_thin.png');
+}
+
+// why us
+#why-to-use-it {
+    width: 100px;
+    height: 100px;
+    background-color: $primary-color;
+    -webkit-mask-image: url('../img/happy-face.png');
 }
