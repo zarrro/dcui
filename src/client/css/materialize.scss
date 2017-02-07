@@ -90,6 +90,11 @@ nav ul a {
 
 // home page
 
+.icon {
+  display: inline;
+  opacity: 0.7;
+}
+
 // send your case icon
 #how-it-works-icon {
     width: 87px;
@@ -111,5 +116,5 @@ nav ul a {
     width: 100px;
     height: 100px;
     background-color: $primary-color;
-    -webkit-mask-image: url('../img/happy-face.png');
+    -webkit-mask-image: url('../img/happy_face_2.png');
 }
