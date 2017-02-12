@@ -5,12 +5,12 @@
   <li><a (click)="logout()">Logout</a></li>
 </ul>
 <div class="navbar-fixed">
-  <nav role="navigation">
+  <nav role="navigation z-depth-0">
     <div class="nav-wrapper container">
       <a id="logo-container" class="brand-logo" [routerLink]="['/']" [routerLinkActive]="['router-link-active']" [routerLinkActiveOptions]="{exact:true}">Dermal Clinic</a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="waves-effect btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']"
-            [routerLinkActiveOptions]="{exact:true}">Ask a Dermatologist</a></li>
+        <li><a class="waves-effect navbar-btn" [routerLink]="['/anamnesisForm']" [routerLinkActive]="['router-link-active']"
+            [routerLinkActiveOptions]="{exact:true}">SEND CASE</a></li>
         <li><a>Check Request</a></li>
         <li><a href="#intro">Service</a></li>
         <li><a href="#team">Team</a></li>

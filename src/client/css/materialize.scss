@@ -19,8 +19,9 @@ header, main, footer {
 
 // navbar
 
+// overrides defaults
 nav {
-  box-shadow: none;
+  @extend .z-depth-0;
   color: $primary-color;
   background-color: $primary-color-text;
 }
@@ -31,7 +32,6 @@ nav ul a {
 
 .navbar-btn {
   // copy paste from .btn
-  border: $button-border;
   border-radius: $button-radius;
   display: inline-block;
   height: $button-height;
@@ -40,15 +40,16 @@ nav ul a {
   text-transform: uppercase;
   vertical-align: middle;
 
-  // border: 1px solid $navbar-font-color;
-  color: $navbar-font-color;
-  background-color: $primary-color;
-  box-shadow: 0 0 1px 1px #fff;
+  border: 2px solid $navbar-font-color;
+  color: $primary-color;
+  background-color: #fff;
+  box-shadow: none;
   margin-right: 20px;
 }
 
 .navbar-btn:hover {
   background-color: $primary-color;
+  color: #fff;
   box-shadow: none ;
   font-weight: 500;
 }
@@ -75,8 +76,8 @@ nav ul a {
 }
 
 .top-banner {
-    min-height: 580px;
-    max-height: 790px;
+    min-height: 640px;
+    max-height: 830px;
     position: relative;
     z-index: -1;
     background-color: $primary-color;
@@ -84,15 +85,23 @@ nav ul a {
 }
 
 .top-container {
-    position: relative;
-    top: -500px;
+    margin-top: -500px;
+}
+
+.pull-up-75 {
+  margin: -75px;
+}
+
+.right-pad-25 {
+  padding-right: 25px !important;
 }
 
 // home page
 
-.icon {
+img.icon {
   display: inline;
   opacity: 0.7;
+  margin-right: 5px;
 }
 
 // send your case icon

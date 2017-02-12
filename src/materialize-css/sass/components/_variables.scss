@@ -105,7 +105,7 @@ $button-floating-radius: 50% !default;
 // 4. Cards
 // ==========================================================================
 
-$card-padding: 40px 100px 40px 100px !default; //peevs: changed 20px - 30px
+$card-padding: 10% !default; //peevs: changed 20px - 30px
 $card-bg-color: #fff !default;
 $card-link-color: color("orange", "accent-2") !default;
 $card-link-color-light: lighten($card-link-color, 20%) !default;
