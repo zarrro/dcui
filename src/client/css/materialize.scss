@@ -80,6 +80,7 @@ nav ul a {
     max-height: 830px;
     position: relative;
     z-index: -1;
+    background-image: url('../img/happy-family-2.jpg');
     background-color: $primary-color;
     background-size: cover;
 }
@@ -88,27 +89,12 @@ nav ul a {
     margin-top: -500px;
 }
 
-.pull-up-75 {
-  margin: -75px;
-}
-
-.right-pad-25 {
-  padding-right: 25px !important;
-}
-
-// home page
-
-img.icon {
-  display: inline;
-  opacity: 0.7;
-  margin-right: 5px;
-}
-
 // send your case icon
 #how-it-works-icon {
     width: 87px;
     height: 100px;
     background-color: $primary-color;
+    mask-image: url('../img/face-dermal-issue.png');
     -webkit-mask-image: url('../img/face-dermal-issue.png');
 }
 

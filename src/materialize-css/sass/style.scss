@@ -2,7 +2,7 @@
   HTML Styles
 ***************/
 body {
-  background-color: #f7f7f7;
+  background-color: #f6f6f6;
 }
 
 p.box {
@@ -290,23 +290,41 @@ a.button-collapse.top-nav {
   }
 }
 
-.promo{
+.promo {
   width: 100%;
+  padding: 35px;
+  margin: 0px;
 
   i {
-    margin: 40px 0;
-    color: color("materialize-red", "lighten-2");
-    font-size: 7rem;
-    display: block;
+    color: #00aeef;
+    margin-right: 5px;
+  }
+
+  li {
+    font-size: 14.5px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.71); // same as p
+  }
+
+  img {
+    margin-top: 5px;
+    margin-bottom: 40px;
   }
 }
 
 .promo-caption {
-  font-size: 1.7rem;
-  font-weight: 500;
-  margin-top: 5px;
+  // font-size: 1.7rem;
+  // font-weight: 500;
+  margin-top: 0;
   margin-bottom: 0;
+}
 
+.pull-up {
+  margin-top: -35px;
+}
+
+.right-pad {
+  padding-right: 35px !important;
 }
 
 #front-page-nav {
