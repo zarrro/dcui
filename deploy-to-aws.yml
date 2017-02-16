@@ -1,0 +1,31 @@
+---
+- hosts: localhost
+  vars:
+    checkout_path: /home/zaro/dcui
+  remote_user: zaro
+  tasks:
+  - name: checkout latest dcui
+    git:
+      repo: git@github.com:zarrro/dcui.git
+      dest: "{{ checkout_path }}"
+  - name: install npm dependancies
+    npm:
+      path: "{{ checkout_path }}"
+  - name: prepare dcui prod
+    command: npm run build.prod chdir={{checkout_path}}
+  - name: archive dcui prod build
+    command: tar -zcf ./dist.tar.gz ./dist chdir={{ checkout_path }}
+
+- hosts: aws-dc
+  remote_user: zaro
+  vars:
+    checkout_path: /home/zaro/dcui
+    dcui_archive_extract_path: /home/ubuntu
+  tasks:
+  - name: upload prod arhive to aws-dc host 
+    copy:
+       src: "{{ checkout_path }}/dist.tar.gz"
+       dest: "{{ dcui_archive_extract_path }}"
+  - name: extract dcui prod build
+    command: tar --overwrite -zxf {{ dcui_archive_extract_path }}//dist.tar.gz
+   
