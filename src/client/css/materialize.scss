@@ -114,18 +114,32 @@ nav ul a {
     -webkit-mask-image: url('../img/happy_face_2.png');
 }
 
+// cta
 .cta {
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding-top: 60px;
+  padding-bottom: 60px;
+  
+  h3 {
+    font-weight: 300;
+  }
+  
   p {
     margin-top: 0;
   }
+  
   a {
-    height: 60px;
-    line-height: 60px;
+    height: 65px;
+    line-height: 65px;
   }
 }
 
-#cta-header {
-  margin-top: 60px;
-  margin-bottom: 30px;
-  font-weight: 300;
+#facts {
+  background-color: $primary-color;
+
+  h1 {
+    color: #fff;
+  }
 }

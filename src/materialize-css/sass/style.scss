@@ -294,6 +294,7 @@ a.button-collapse.top-nav {
   width: 100%;
   padding: 35px;
   margin: 0px;
+  overflow: hidden;
 
   i {
     color: #00aeef;
@@ -363,11 +364,6 @@ a.button-collapse.top-nav {
     line-height: 50px;
   }
 }
-
-.promo-example {
-  overflow: hidden;
-}
-
 
 /*******************
   Flat Site Mockup
