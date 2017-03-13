@@ -4,15 +4,14 @@ class Survey {
 	//form fields
 	itchy: string;
 	hurts: string;
-	description: string;
-	duration: string;
-	coldfeel: string;
 	hotfeel: string;
-	history: string;
+	coldfeel: string;
+	duration: string;
+	description: string;
 	sex: string;
 	age: string;
-	previousTreatment: string;
-	previousDiagnose: string;
+	email: string;
+	confirmEmail: string;
 }
 
 @Injectable()

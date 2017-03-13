@@ -44,7 +44,6 @@ export class AnamnesisFormComponent implements AfterViewInit {
 
   formErrors: { [key: string]: string } = {
     'age': '',
-    'history': '',
     'description': '',
     'image1': '',
     'image2': ''
@@ -71,9 +70,6 @@ export class AnamnesisFormComponent implements AfterViewInit {
     'image2': {
       'required': 'Close up photo is required.',
     },
-    'history': {
-      'required': 'History of the decease is required.',
-    },
     'description': {
       'required': 'Description of your condition is required.',
     }
@@ -84,7 +80,6 @@ export class AnamnesisFormComponent implements AfterViewInit {
 
   @ViewChild('fRef') currentNgForm: NgForm;
   @ViewChild('ageLabel') ageLabel: ElementRef;
-  @ViewChild('historyLabel') historyLabel: ElementRef;
   @ViewChild('descriptionLabel') descriptionLabel: ElementRef;
 
   constructor(private elementRef: ElementRef, public form: AnamnesisFormService, private router: Router,
@@ -221,9 +216,6 @@ export class AnamnesisFormComponent implements AfterViewInit {
   private updateTextLabelsState() {
     if (this.form.survey.age) {
       this.renderer.setElementClass(this.ageLabel.nativeElement, 'active', true);
-    }
-    if (this.form.survey.history) {
-      this.renderer.setElementClass(this.historyLabel.nativeElement, 'active', true);
     }
     if (this.form.survey.description) {
       this.renderer.setElementClass(this.descriptionLabel.nativeElement, 'active', true);

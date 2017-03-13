@@ -104,15 +104,15 @@
                 </select>
               </div>
               <div class="input-field col offset-s1 s10 m5">
-                <input id="age" type="text" required (keypress)="onKeyPressFilterNonDigit($event)" data-err="kur" numberValidRange="5-105" name="age" [(ngModel)]="form.survey.age">
+                <input id="age" type="text" required (keypress)="onKeyPressFilterNonDigit($event)" numberValidRange="5-105" name="age" [(ngModel)]="form.survey.age">
                 <label #ageLabel for="age" id="age_label">Age</label>
               </div>
               <div class="input-field col offset-s1 s10">
-                <input id="text_email" type="text" class="validate" name="email" [(ngModel)]="email">
+                <input id="text_email" type="text" class="validate" name="email" [(ngModel)]="form.survey.email">
                 <label for="text_email">Email</label>
               </div>
               <div class="input-field col offset-s1 s10">
-                <input id="text_email_confirm" type="text" class="validate" name="confirmEmail" [(ngModel)]="confirmEmail">
+                <input id="text_email_confirm" type="text" class="validate" name="confirmEmail" [(ngModel)]="form.survey.confirmEmail">
                 <label for="text_email_confirm">Confirm email</label>
               </div>
             </div>
