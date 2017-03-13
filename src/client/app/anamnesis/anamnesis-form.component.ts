@@ -9,7 +9,6 @@ import { AnamnesisFormService } from './anamnesis-form.service';
 import 'rxjs/add/operator/toPromise';
 import { ImageResult, ResizeOptions } from 'ng2-imageupload';
 
-declare var paypal: any;
 declare var $: any;
 
 @Component({
@@ -120,39 +119,7 @@ export class AnamnesisFormComponent implements AfterViewInit {
       this.fieldOnFocus = event.target.name;
     });
 
-    // render payment button
-    paypal.Button.render({
-      env: 'sandbox', // Specify 'sandbox' for the test environment
 
-      client: {
-        sandbox: 'AYJDB6VRfkdCzRTsQcgSOMlLdHpNdHX2shweNLoxbAKvVaJaxigN8PbROYu12cEnibCqP75uv2Scoien',
-        production: 'xxxxxxxxx'
-      },
-
-      payment: function () {
-        var env = this.props.env;
-        var client = this.props.client;
-
-        return paypal.rest.payment.create(env, client, {
-          transactions: [
-            {
-              amount: { total: '1.00', currency: 'USD' }
-            }
-          ]
-        })
-      },
-
-      commit: true, // Optional: show a 'Pay Now' button in the checkout flow
-
-      onAuthorize: function (data, actions) {
-
-        // Optional: display a confirmation page here
-
-        return actions.payment.execute().then(function () {
-          document.location.href = "/result/Success";
-        });
-      }
-    }, '#paypal-button');
   }
 
   ngAfterViewChecked() {

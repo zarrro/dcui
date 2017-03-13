@@ -3,6 +3,45 @@ import { AnamnesisFormService } from './anamnesis-form.service';
 import { BackendService } from '../shared/backend-service/backend-service';
 import { Router } from '@angular/router';
 
+declare var paypal: any;
+
+class PaymentButtonConfig {
+  env: any;
+  style: any;
+  commit: boolean;
+  onAuthorize: any;
+  payment: any;
+
+  constructor() {
+    this.env = 'sandbox'; // Specify 'sandbox' for the test environment
+    this.style = {
+      size: 'medium',
+      color: 'silver',
+      shape: 'rect'
+    };
+    this.commit = true;
+    
+    this.onAuthorize = (data) => {
+      // Note: you can display a confirmation page before executing
+
+      let EXECUTE_PAYMENT_URL = 'http://192.168.0.104:8080/payment-execute';
+
+      paypal.request.post(EXECUTE_PAYMENT_URL, { paymentID: data.paymentID, payerID: data.payerID })
+          .then(function(data) { console.log("Data: "); console.log(data); })
+          .catch(function(err) { console.log("Error: "); console.log(err); });
+    }
+    
+    this.payment = (resolve, reject) => {
+
+      let CREATE_PAYMENT_URL = 'http://192.168.0.104:8080/payment';
+
+      paypal.request.post(CREATE_PAYMENT_URL)
+        .then(function(data) { console.log(data); resolve(data.paymentId); })
+        .catch(function(err) { console.log(err); reject(err); });  
+    }
+  };
+}
+
 @Component({
   moduleId: module.id, // this is needed to correctly resolve paths to templateUrl and Css
   templateUrl: 'payment.component.html',
@@ -32,6 +71,9 @@ export class PaymentComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.isVisible = 'yes';
+
+    // render payment button
+    paypal.Button.render(new PaymentButtonConfig(),'#paypal-button');
   }
 
   onSubmit(v: any) {

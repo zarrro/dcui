@@ -143,3 +143,20 @@ nav ul a {
     color: #fff;
   }
 }
+
+// anamnesis form
+.checkbox_label {
+  color: rgba(0, 0, 0, 0.71); // same as p
+}
+
+.form-section-title {
+  margin-bottom: 20px;
+
+  img {
+    // margin-right: 16px;
+  }
+
+  h5 {
+    color: $primary-color;
+  }
+}

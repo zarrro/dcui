@@ -1,0 +1,7 @@
+<svg height="48" width="48"  xmlns="http://www.w3.org/2000/svg">
+    <g id="num1">
+        <circle cx="24" cy="24" r="24" stroke-width="0" fill="#00aeef">
+        </circle>
+        <text style="font-size: 1.2rem" x="50%" y="50%" text-anchor="middle" fill="#fff" stroke="#fff" stroke-width="1px" dy=".3em">1</text>
+    </g>
+</svg>
