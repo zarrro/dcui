@@ -63,10 +63,6 @@ export class PaymentComponent implements AfterViewInit {
   // for animation
   isVisible: string = 'no';
 
-  //form fields
-  email: string;
-  confirmEmail: string;
-
   constructor(private router: Router, private form: AnamnesisFormService, private bs: BackendService, ) { }
 
   ngAfterViewInit() {

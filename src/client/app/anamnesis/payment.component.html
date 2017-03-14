@@ -1,34 +1,71 @@
 <div class="top-banner">
 </div>
 <div class="container top-container">
-  <div class="row page-wrap" [@isVisibleChanged]="isVisible">
-    <form class="col s8 offset-s2" #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
+  <div class="row" [@isVisibleChanged]="isVisible">
+    <div class="col s8 offset-s2">
       <div class="card-panel">
-        <h5>Contact details</h5>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="text_email" type="text" class="validate" name="email" [(ngModel)]="email">
-            <label for="text_email">Email</label>
-          </div>
+        <div class="section">
+            <div class="row form-section-title">
+              <div class="col s10 offset-s1">
+                <h5>PHOTOS OF THE AFFECTED AREA</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4 offset-s1">
+                <img [(src)]="form.image1Resized"/>
+              </div>
+              <div class="col s6">
+                <p>Image 1: {{form.image1.name}}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s4 offset-s1">
+                <img [(src)]="form.image2Resized"/>
+              </div>
+              <div class="col s6">
+                <p>Image 2: {{form.image2.name}}</p>
+              </div>
+            </div>
         </div>
-        <div class="row">
-          <div class="input-field col s12">
-            <input id="text_email_confirm" type="text" class="validate" name="confirmEmail" [(ngModel)]="confirmEmail">
-            <label for="text_email_confirm">Confirm email</label>
-          </div>
+        <div class="section">
+            <div class="row form-section-title">
+              <div class="col s10 offset-s1">
+                <h5>DETAILS OF YOUR CONDITION</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s10 offset-s1">
+                <p>Duration: {{form.survey.duration}}</p>
+                <p>Sympthoms: {{form.survey.itchy}};{{form.survey.hurts}};{{form.survey.hotfeel}};{{form.survey.coldfeel}};</p>
+                <p>Description: {{form.survey.description}}</p>
+              </div>
+            </div>
         </div>
-        <h5>Payment</h5>
+        <div class="section">
+            <div class="row form-section-title">
+              <div class="col s10 offset-s1">
+                <h5>GENERAL INFORMATION</h5>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s10 offset-s1">
+                <p>Gender: {{form.survey.sex}}</p>
+                <p>Age: {{form.survey.age}}</p>
+                <p>Email: {{form.survey.email}}</p>
+              </div>
+            </div>
+        </div>
+
         <div class="row">
-          <div class="input-field col s12">
-            <input id="text_payment" type="text" class="validate" name="paypal" [(ngModel)]="paypal">
-            <label for="text_payment_confirm">Paypal</label>
-          </div>
+           <div id="paypal-button"></div>
         </div>
         <div class="row" style="padding-top: 20px">
-            <button type="submit" class="btn col s6 offset-s3 waves-effect waves-light">Submit</button>
+          <form #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
+              <button type="submit" class="btn col s6 offset-s3 waves-effect waves-light">Submit</button>
+          </form>
         </div>
       </div>
-    </form>
+    </div>
   </div>
 </div>
 <!--
