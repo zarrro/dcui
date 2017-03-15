@@ -11,8 +11,8 @@ class PaymentButtonConfig {
   commit: boolean;
   onAuthorize: any;
   payment: any;
-
-  constructor() {
+  
+  constructor(onPaymentSuccess: any) {
     this.env = 'sandbox'; // Specify 'sandbox' for the test environment
     this.style = {
       size: 'medium',
@@ -21,16 +21,6 @@ class PaymentButtonConfig {
     };
     this.commit = true;
     
-    this.onAuthorize = (data) => {
-      // Note: you can display a confirmation page before executing
-
-      let EXECUTE_PAYMENT_URL = 'http://192.168.0.104:8080/payment-execute';
-
-      paypal.request.post(EXECUTE_PAYMENT_URL, { paymentID: data.paymentID, payerID: data.payerID })
-          .then(function(data) { console.log("Data: "); console.log(data); })
-          .catch(function(err) { console.log("Error: "); console.log(err); });
-    }
-    
     this.payment = (resolve, reject) => {
 
       let CREATE_PAYMENT_URL = 'http://192.168.0.104:8080/payment';
@@ -38,6 +28,20 @@ class PaymentButtonConfig {
       paypal.request.post(CREATE_PAYMENT_URL)
         .then(function(data) { console.log(data); resolve(data.paymentId); })
         .catch(function(err) { console.log(err); reject(err); });  
+    }
+
+    this.onAuthorize = (data) => {
+      // Note: you can display a confirmation page before executing
+
+      let EXECUTE_PAYMENT_URL = 'http://192.168.0.104:8080/payment-execute';
+      let paymentSuccessFunc = onPaymentSuccess;
+
+      paypal.request.post(EXECUTE_PAYMENT_URL, { paymentID: data.paymentID, payerID: data.payerID })
+          .then(function(result) {
+            console.log("Payment executed successfully");
+            console.log(result); 
+            paymentSuccessFunc(data.paymentID);
+          }).catch(function(err) { console.log("Error: "); console.log(err); });
     }
   };
 }
@@ -68,8 +72,31 @@ export class PaymentComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.isVisible = 'yes';
 
+    let backendService = this.bs;
+    let f = this.form;
+    let r: Router = this.router;
+
+    // the function to be executed on successfully authorized payment
+    let onPaymentSuccessFunc = (paymentId) => {
+      console.log("onPaymentSuccessFunc - paymentId:" + paymentId);
+      console.log("onPaymentSuccessFunc - submitting form:");
+      console.log(f);
+
+      const formData = new FormData();
+      console.log('upload');
+
+      formData.append('image1', this.form.image1);
+      formData.append('image2', this.form.image2);
+      formData.append('survey', JSON.stringify(this.form.survey));
+
+      backendService.post('anamnesis', formData).then(res => {
+      console.log(res._body);
+         r.navigate(['result', res._body]);
+      }).catch(err => { console.log(err); });
+    }
+
     // render payment button
-    paypal.Button.render(new PaymentButtonConfig(),'#paypal-button');
+    paypal.Button.render(new PaymentButtonConfig(onPaymentSuccessFunc),'#paypal-button');
   }
 
   onSubmit(v: any) {
