@@ -40,7 +40,10 @@ class PaymentButtonConfig {
           .then(function(result) {
             console.log("Payment executed successfully");
             console.log(result); 
-            paymentSuccessFunc(data.paymentID);
+            if(data.paymentID != result.id) {
+              console.warn("WTF ?")
+            }
+            paymentSuccessFunc(result.id);
           }).catch(function(err) { console.log("Error: "); console.log(err); });
     }
   };
@@ -85,6 +88,7 @@ export class PaymentComponent implements AfterViewInit {
       const formData = new FormData();
       console.log('upload');
 
+      formData.append('paymentId', paymentId);
       formData.append('image1', this.form.image1);
       formData.append('image2', this.form.image2);
       formData.append('survey', JSON.stringify(this.form.survey));
@@ -97,21 +101,5 @@ export class PaymentComponent implements AfterViewInit {
 
     // render payment button
     paypal.Button.render(new PaymentButtonConfig(onPaymentSuccessFunc),'#paypal-button');
-  }
-
-  onSubmit(v: any) {
-    console.log(this.form);
-
-    const formData = new FormData();
-    console.log('upload');
-
-    formData.append('image1', this.form.image1);
-    formData.append('image2', this.form.image2);
-    formData.append('survey', JSON.stringify(this.form.survey));
-
-    this.bs.post('anamnesis', formData).then(res => {
-      console.log(res._body);
-         this.router.navigate(['result', res._body]);
-    }).catch(err => { console.log(err); });
   }
 }

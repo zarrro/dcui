@@ -55,14 +55,13 @@
               </div>
             </div>
         </div>
-
-        <div class="row">
-           <div id="paypal-button"></div>
-        </div>
         <div class="row" style="padding-top: 20px">
-          <form #fRef="ngForm" materialize (ngSubmit)="onSubmit(fRef.value)">
-              <button type="submit" class="btn col s6 offset-s3 waves-effect waves-light">Submit</button>
-          </form>
+          <div class="col s12">
+              <h6 class="center-align">Pay 20 EUR dermatologist fee to send you case for review</h6>
+          </div>
+          <div class="col s4 offset-s4">
+            <div id="paypal-button"></div>
+          </div>
         </div>
       </div>
     </div>
