@@ -12,7 +12,7 @@ class PaymentButtonConfig {
   onAuthorize: any;
   payment: any;
   
-  constructor(onPaymentSuccess: any) {
+  constructor(backendService:BackendService, fData: FormData, onPaymentSuccess: any) {
     this.env = 'sandbox'; // Specify 'sandbox' for the test environment
     this.style = {
       size: 'medium',
@@ -36,15 +36,17 @@ class PaymentButtonConfig {
       let EXECUTE_PAYMENT_URL = 'http://192.168.0.104:8080/payment-execute';
       let paymentSuccessFunc = onPaymentSuccess;
 
-      paypal.request.post(EXECUTE_PAYMENT_URL, { paymentID: data.paymentID, payerID: data.payerID })
-          .then(function(result) {
-            console.log("Payment executed successfully");
-            console.log(result); 
-            if(data.paymentID != result.id) {
-              console.warn("WTF ?")
-            }
-            paymentSuccessFunc(result.id);
-          }).catch(function(err) { console.log("Error: "); console.log(err); });
+      console.log('append form data - payerId:' + data.payerID);
+      fData.append('payerId', data.payerID);
+
+      console.log('append form data - paymentId:' + data.paymentID);
+      fData.append('paymentId', data.paymentID);
+
+      backendService.post('payment-execute', fData).then(res => {
+        console.log("Payment executed successfully");
+        console.log(res); 
+        paymentSuccessFunc(JSON.parse(res._body).id);
+      }).catch(err => { console.log(err); });
     }
   };
 }
@@ -76,30 +78,19 @@ export class PaymentComponent implements AfterViewInit {
     this.isVisible = 'yes';
 
     let backendService = this.bs;
-    let f = this.form;
     let r: Router = this.router;
+    let formData = new FormData();  
+    formData.append('image1', this.form.image1);
+    formData.append('image2', this.form.image2);
+    formData.append('survey', JSON.stringify(this.form.survey));
 
     // the function to be executed on successfully authorized payment
     let onPaymentSuccessFunc = (paymentId) => {
-      console.log("onPaymentSuccessFunc - paymentId:" + paymentId);
-      console.log("onPaymentSuccessFunc - submitting form:");
-      console.log(f);
-
-      const formData = new FormData();
-      console.log('upload');
-
-      formData.append('paymentId', paymentId);
-      formData.append('image1', this.form.image1);
-      formData.append('image2', this.form.image2);
-      formData.append('survey', JSON.stringify(this.form.survey));
-
-      backendService.post('anamnesis', formData).then(res => {
-      console.log(res._body);
-         r.navigate(['result', res._body]);
-      }).catch(err => { console.log(err); });
+      console.log('onPaymentSuccessFunc: ' + paymentId);
+      r.navigate(['result', paymentId]);
     }
 
     // render payment button
-    paypal.Button.render(new PaymentButtonConfig(onPaymentSuccessFunc),'#paypal-button');
+    paypal.Button.render(new PaymentButtonConfig(backendService, formData, onPaymentSuccessFunc),'#paypal-button');
   }
 }
