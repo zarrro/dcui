@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 
-import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { AnamnesisModule } from './anamnesis/anamnesis.module';
@@ -14,7 +13,7 @@ import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes),
-    AboutModule, HomeModule, SharedModule.forRoot(), AnamnesisModule, AuthModule],
+    HomeModule, SharedModule.forRoot(), AnamnesisModule, AuthModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
