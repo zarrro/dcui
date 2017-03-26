@@ -11,8 +11,8 @@ class PaymentButtonConfig {
   commit: boolean;
   onAuthorize: any;
   payment: any;
-  
-  constructor(backendService:BackendService, fData: FormData, onPaymentSuccess: any) {
+
+  constructor(backendService: BackendService, fData: FormData, onPaymentSuccess: any) {
     this.env = 'sandbox'; // Specify 'sandbox' for the test environment
     this.style = {
       size: 'medium',
@@ -20,15 +20,15 @@ class PaymentButtonConfig {
       shape: 'rect'
     };
     this.commit = true;
-    
-    this.payment = (resolve, reject) => {
+
+    this.payment = (resolve: any, reject: any) => {
       // tried to use backendService.post here, but this caused errors in checkout.js
       paypal.request.post(backendService.backendURL + '/' + 'payment')
-        .then(function(data) { console.log(data); resolve(data.paymentId); })
-        .catch(function(err) { console.log(err); reject(err); });  
-    }
+        .then(function (data: any) { console.log(data); resolve(data.paymentId); })
+        .catch(function (err: any) { console.log(err); reject(err); });
+    };
 
-    this.onAuthorize = (data) => {
+    this.onAuthorize = (data: any) => {
       let paymentSuccessFunc = onPaymentSuccess;
 
       console.log('append form data - payerId:' + data.payerID);
@@ -38,11 +38,11 @@ class PaymentButtonConfig {
       fData.append('paymentId', data.paymentID);
 
       backendService.post('payment-execute', fData).then(res => {
-        console.log("Payment executed successfully");
-        console.log(res); 
+        console.log('Payment executed successfully');
+        console.log(res);
         paymentSuccessFunc(JSON.parse(res._body).id);
       }).catch(err => { console.log(err); });
-    }
+    };
   };
 }
 
@@ -74,18 +74,18 @@ export class PaymentComponent implements AfterViewInit {
 
     let backendService = this.bs;
     let r: Router = this.router;
-    let formData = new FormData();  
+    let formData = new FormData();
     formData.append('image1', this.form.image1);
     formData.append('image2', this.form.image2);
     formData.append('survey', JSON.stringify(this.form.survey));
 
     // the function to be executed on successfully authorized payment
-    let onPaymentSuccessFunc = (paymentId) => {
+    let onPaymentSuccessFunc = (paymentId: string) => {
       console.log('onPaymentSuccessFunc: ' + paymentId);
       r.navigate(['result', paymentId]);
-    }
+    };
 
     // render payment button
-    paypal.Button.render(new PaymentButtonConfig(backendService, formData, onPaymentSuccessFunc),'#paypal-button');
+    paypal.Button.render(new PaymentButtonConfig(backendService, formData, onPaymentSuccessFunc), '#paypal-button');
   }
 }
