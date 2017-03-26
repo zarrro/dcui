@@ -14,7 +14,7 @@ to promises based.
 export class BackendService {
 
   private static defaultRO = BackendService.getDefaultRO();
-  private backendURL: string;
+  public backendURL: string;
 
   private static getCustomRO(headers: any): RequestOptions {
     let ret = BackendService.getDefaultRO();

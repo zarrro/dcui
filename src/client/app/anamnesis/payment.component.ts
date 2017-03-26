@@ -22,18 +22,13 @@ class PaymentButtonConfig {
     this.commit = true;
     
     this.payment = (resolve, reject) => {
-
-      let CREATE_PAYMENT_URL = 'http://192.168.0.104:8080/payment';
-
-      paypal.request.post(CREATE_PAYMENT_URL)
+      // tried to use backendService.post here, but this caused errors in checkout.js
+      paypal.request.post(backendService.backendURL + '/' + 'payment')
         .then(function(data) { console.log(data); resolve(data.paymentId); })
         .catch(function(err) { console.log(err); reject(err); });  
     }
 
     this.onAuthorize = (data) => {
-      // Note: you can display a confirmation page before executing
-
-      let EXECUTE_PAYMENT_URL = 'http://192.168.0.104:8080/payment-execute';
       let paymentSuccessFunc = onPaymentSuccess;
 
       console.log('append form data - payerId:' + data.payerID);
