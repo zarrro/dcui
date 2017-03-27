@@ -52,3 +52,4 @@ gulpfile.js.map
 #misc - added by peevs
 dcui.sublime*
 npm-debug.log.*
+dist.tar.gz
