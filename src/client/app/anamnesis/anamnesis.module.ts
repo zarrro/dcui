@@ -9,10 +9,11 @@ import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { ImageUploadModule } from 'ng2-imageupload';
 import { NumberValidRangeDirective } from './number-valid-range.directive';
+import { EmailValidatorDirective } from './email-validator.directive';
 
 @NgModule({
   imports: [CommonModule, SharedModule, AuthModule, FormsModule, ImageUploadModule],
-  declarations: [AnamnesisFormComponent, PaymentComponent, ResultComponent, NumberValidRangeDirective],
+  declarations: [AnamnesisFormComponent, PaymentComponent, ResultComponent, NumberValidRangeDirective, EmailValidatorDirective],
   exports: [AnamnesisFormComponent, PaymentComponent],
   providers: [AnamnesisFormService]
 })

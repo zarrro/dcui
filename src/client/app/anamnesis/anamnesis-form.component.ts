@@ -46,7 +46,8 @@ export class AnamnesisFormComponent implements AfterViewInit {
     'age': '',
     'description': '',
     'image1': '',
-    'image2': ''
+    'image2': '',
+    'email':''
   };
 
   // ### is a placeholder. It will be replaced with the current value for the given error key
@@ -72,6 +73,10 @@ export class AnamnesisFormComponent implements AfterViewInit {
     },
     'description': {
       'required': 'Description of your condition is required.',
+    },
+    'email': {
+      'required': 'Email is required.',
+      'valid': 'Email is not valid.'
     }
   };
 
