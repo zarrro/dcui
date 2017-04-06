@@ -10,10 +10,11 @@ import { SharedModule } from '../shared/shared.module';
 import { ImageUploadModule } from 'ng2-imageupload';
 import { NumberValidRangeDirective } from './number-valid-range.directive';
 import { EmailValidatorDirective } from './email-validator.directive';
+import { ConfirmEmailValidatorDirective } from './confirm-email-validator.directive';
 
 @NgModule({
   imports: [CommonModule, SharedModule, AuthModule, FormsModule, ImageUploadModule],
-  declarations: [AnamnesisFormComponent, PaymentComponent, ResultComponent, NumberValidRangeDirective, EmailValidatorDirective],
+  declarations: [AnamnesisFormComponent, PaymentComponent, ResultComponent, NumberValidRangeDirective, EmailValidatorDirective, ConfirmEmailValidatorDirective],
   exports: [AnamnesisFormComponent, PaymentComponent],
   providers: [AnamnesisFormService]
 })
