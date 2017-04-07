@@ -26,6 +26,7 @@ export class NumberValidRangeDirective implements Validator, OnChanges {
       this.valFn = Validators.nullValidator;
     }
   }
+
   validate(control: AbstractControl): { [key: string]: any } {
     return this.valFn(control);
   }

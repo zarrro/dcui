@@ -3,12 +3,12 @@ import { AbstractControl, NG_VALIDATORS, ValidatorFn, Validator, FormControl } f
 
 
 @Directive({
-  selector: '[confirmEmailValidator]',
+  selector: '[confirmEmail]',
   providers: [{ provide: NG_VALIDATORS, useExisting: ConfirmEmailValidatorDirective, multi: true }]
 })
 export class ConfirmEmailValidatorDirective implements Validator, OnChanges {
     validator: ValidatorFn;
-    @Input() email: String;
+    @Input('confirmEmail') confirmEmail: String;
 
     constructor() {
         this.validator = this.getValidatorFn();
@@ -19,14 +19,14 @@ export class ConfirmEmailValidatorDirective implements Validator, OnChanges {
     }
 
     ngOnChanges(changes: SimpleChanges): void {
-        const change = changes['confirmEmailValidator'];
+        console.log(changes);
         this.validator = this.getValidatorFn();
     }
 
     // validation function
     getValidatorFn() : ValidatorFn {
         // validator fn has closure on the current email value
-        let currentEmail = this.email;
+        let currentEmail = this.confirmEmail;
         console.log('getValidatorFn -> ' + currentEmail);
         return (c: AbstractControl) => {
             if(c.value === currentEmail) {

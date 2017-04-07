@@ -112,7 +112,7 @@
                 <label for="email">Email</label>
               </div>
               <div class="input-field col offset-s1 s10">
-                <input id="confirmEmail" type="text" class="validate" name="confirmEmail" confirmEmailValidator="form.survey.email" [(ngModel)]="form.survey.confirmEmail">
+                <input id="confirmEmail" type="text" class="validate" name="confirmEmail" [confirmEmail]="form.survey.email" [(ngModel)]="form.survey.confirmEmail">
                 <label for="confirmEmail">Confirm email</label>
               </div>
             </div>
@@ -126,7 +126,6 @@
   </div>
 </div>
 <!--
-numberValidRange="5-105"
 <p>FORM: {{JSON.stringify(fRef.value)}}</p>
 <p>data: {{JSON.stringify(f)}}</p>
 -->
