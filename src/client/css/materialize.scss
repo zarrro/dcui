@@ -138,12 +138,38 @@ nav ul a {
 
 #facts {
   background-color: $primary-color;
-  height: 300px;
-  h1 {
+  // height: 350px;
+  h1, h2, h3, h4, h5, h6 {
+    display: inline;
     color: #fff;
+  }
+
+  h2 {
+    font-weight: bold;
+  }
+
+  .col {
+    padding-top: 35px;
+    padding-right: 35px;
+    // 2x to compensate pull-up of the next section
+    padding-bottom: 70px;
   }
 }
 
+#social {
+  i {
+    color: #F39317;
+    font-size: 18px;
+  }
+
+  p {
+    margin: 0px;
+  }
+
+  .row {
+    margin-bottom: 30px;
+  }
+}
 .social {
     padding: 70px;
 }
