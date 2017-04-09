@@ -138,11 +138,16 @@ nav ul a {
 
 #facts {
   background-color: $primary-color;
-
+  height: 300px;
   h1 {
     color: #fff;
   }
 }
+
+.social {
+    padding: 70px;
+}
+
 
 // anamnesis form
 .checkbox_label {
