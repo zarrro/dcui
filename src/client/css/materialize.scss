@@ -89,6 +89,15 @@ nav ul a {
     margin-top: -500px;
 }
 
+.pull-up {
+  margin-top: -35px;
+}
+
+.pull-up-2 {
+  position: relative;
+  top: -35px;
+}
+
 // send your case icon
 #how-it-works-icon {
     width: 87px;
@@ -174,6 +183,29 @@ nav ul a {
     padding: 70px;
 }
 
+#team {
+    // background-color: #B3E5FC;
+    padding-top: 4rem;
+}
+
+#team-content {
+  background-color: $primary-color;
+  color: #fff;
+  p {
+    color: #fff;
+  }
+}
+
+#team-cover {
+  background-image: url('../img/doctors-comp-2.jpg');
+  background-color: $primary-color;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 800px;
+  width: auto;
+}
+
+#work {background: rgb(247, 247, 247);}
 
 // anamnesis form
 .checkbox_label {
