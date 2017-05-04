@@ -166,6 +166,13 @@ nav ul a {
 }
 
 #social {
+  // background-image: url('../img/family-pool.jpg');
+  // background-color: $primary-color;
+  // // background-size: cover;
+  // // background-repeat: no-repeat;
+  // // height: 700px;
+  // width: auto;
+
   i {
     color: #F39317;
     font-size: 18px;
@@ -178,31 +185,20 @@ nav ul a {
   .row {
     margin-bottom: 30px;
   }
-}
-.social {
-    padding: 70px;
+
+  .card-panel {
+    padding:45px;
+    background-color: rgba(255, 255, 255, 0.71);
+  }
 }
 
 #team {
     // background-color: #B3E5FC;
-    padding-top: 4rem;
-}
-
-#team-content {
-  background-color: $primary-color;
-  color: #fff;
-  p {
+  h2 {
     color: #fff;
   }
-}
-
-#team-cover {
-  background-image: url('../img/doctors-comp-2.jpg');
+  // padding-top: 4rem;
   background-color: $primary-color;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 800px;
-  width: auto;
 }
 
 #work {background: rgb(247, 247, 247);}
@@ -222,4 +218,38 @@ nav ul a {
   h5 {
     color: $primary-color;
   }
+}
+
+// animantions
+.animated { 
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+}
+
+.animated2 { 
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+}
+
+.animated3 { 
+    animation-duration: 1.5s;
+    animation-fill-mode: both;
+    animation-timing-function: ease;
+}
+
+@keyframes fadeInUp { 
+    0% { 
+        opacity: 0; 
+        transform: translateY(60px); 
+    } 
+    100% { 
+        opacity: 1; 
+        transform: translateY(0); 
+    } 
+} 
+
+.fadeInUp { 
+    animation-name: fadeInUp; 
 }

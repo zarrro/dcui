@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
+
+declare var $: any;
 
 /**
  * This class represents the lazy loaded HomeComponent.
@@ -9,6 +11,9 @@ import { Component } from '@angular/core';
   templateUrl: 'socialproof.component.html'
 })
 
-export class SocialproofComponent {
+export class SocialproofComponent implements AfterViewInit {
 
+  ngAfterViewInit(): void {
+    $('.parallax').parallax();
+  }
 }
