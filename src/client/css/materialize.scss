@@ -19,32 +19,28 @@ header, main, footer {
 
 // navbar
 
-// overrides defaults
+// // overrides defaults
 nav {
-  @extend .z-depth-0;
-  color: $primary-color;
-  background-color: $primary-color-text;
-}
-
-nav ul a {
-    font-size: 1.2rem;
+  background-color:  #fff;
 }
 
 .navbar-btn {
   // copy paste from .btn
+  @extend .z-depth-1;
   border-radius: $button-radius;
   display: inline-block;
-  height: $button-height;
-  line-height: $button-height;
-  padding: $button-padding;
+  height: auto;
+  width: auto;
+  white-space: normal;
+  line-height: normal;
+  padding: 18px 30px 18px 30px;
   text-transform: uppercase;
   vertical-align: middle;
-
-  border: 2px solid $navbar-font-color;
-  color: $primary-color;
-  background-color: #fff;
-  box-shadow: none;
-  margin-right: 20px;
+  border: none;
+  color: #fff;
+  background-color: $primary-color;
+  margin-left: 40px;
+  margin-bottom: -35px;
 }
 
 .navbar-btn:hover {
