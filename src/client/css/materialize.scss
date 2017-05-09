@@ -12,6 +12,10 @@ main {
   flex: 1 0 auto;
 }
 
+.font2 {
+  font-family: 'Comfortaa', cursive;
+}
+
 // override padding-left: 300px set in node_modules\materialize-css\sass\style.scss
 header, main, footer {
   padding-left: 0px;
@@ -72,13 +76,19 @@ nav {
 }
 
 .top-banner {
-    min-height: 640px;
-    max-height: 830px;
+    min-height: 700px;
+    // max-height: 830px;
     position: relative;
     z-index: -1;
-    background-image: url('../img/happy-family-2.jpg');
-    background-color: $primary-color;
-    background-size: cover;
+    background-color: #f1f1f1;
+}
+
+.heroimg {
+    background-image: url('../img/hero_doctors830px.png');
+    background-size: 75% auto;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    min-height: inherit;
 }
 
 .top-container {
