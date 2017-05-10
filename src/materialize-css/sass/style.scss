@@ -221,32 +221,6 @@ a.button-collapse.top-nav {
   .container {
     position: relative;
   }
-  .header {
-    color: #FFF;
-  }
-  h4 {
-    margin-bottom: 40px;
-  }
-  h1 {
-    margin-top: 16px;
-  }
-}
-@media #{$medium-and-down} {
-  #index-banner {
-    h1 {
-      margin-top: 60px;
-    }
-    h4 {
-      margin-bottom: 15px;
-    }
-  }
-}
-@media #{$small-and-down} {
-  #index-banner {
-    h4 {
-      margin-bottom: 0;
-    }
-  }
 }
 
 // Latest commit widget

@@ -75,6 +75,26 @@ nav {
   margin: 0px 0px 0px 0px;
 }
 
+// hero image and headers
+.top-textbox {
+  position: relative;
+  top: 140px;
+}
+
+.top-textbox h1, h2, h3, h4, h5, h6 {
+  letter-spacing: 0.3rem;
+}
+
+.top-textbox h1 {
+  // different margin than the other h
+  // to compensate gap due to different font
+  margin: 0px 0px 5px 0px;
+}
+
+.top-textbox h2, h3, h4, h5, h6 {
+  margin: 0px 0px 15px 0px;
+}
+
 .top-banner {
     min-height: 700px;
     // max-height: 830px;
