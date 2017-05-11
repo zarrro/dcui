@@ -81,19 +81,26 @@ nav {
   top: 140px;
 }
 
-.top-textbox h1, h2, h3, h4, h5, h6 {
-  letter-spacing: 0.3rem;
+.top-textbox {
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: 0.3rem;
+  }
+
+  h1 {
+    // different margin than the other h
+    // to compensate gap due to different font
+    margin: 0px 0px 5px 0px;
+  }
+
+  h2, h3, h4, h5 {
+    margin: 0px 0px 15px 0px;
+  }
+
+  h6 {
+    margin: 60px 0px 60px 0px;
+  }
 }
 
-.top-textbox h1 {
-  // different margin than the other h
-  // to compensate gap due to different font
-  margin: 0px 0px 5px 0px;
-}
-
-.top-textbox h2, h3, h4, h5, h6 {
-  margin: 0px 0px 15px 0px;
-}
 
 .top-banner {
     min-height: 700px;
@@ -156,7 +163,7 @@ nav {
   margin-bottom: 60px;
   padding-top: 60px;
   padding-bottom: 60px;
-  
+
   h3 {
     font-weight: 300;
   }
@@ -165,10 +172,18 @@ nav {
     margin-top: 0;
   }
   
-  a {
-    height: 65px;
-    line-height: 65px;
-  }
+  // a {
+  //   height: 65px;
+  //   line-height: 65px;
+  // }
+}
+
+.cta-btn {
+  @extend .btn;
+  @extend .btn-large;
+
+  letter-spacing: 0.1rem;
+  font-weight: bold;
 }
 
 #facts {
