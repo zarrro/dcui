@@ -266,13 +266,14 @@ a.button-collapse.top-nav {
 
 .promo {
   width: 100%;
-  padding: 35px;
+  padding: 45px;
   margin: 0px;
   overflow: hidden;
 
   i {
-    color: #00aeef;
+    color: $primary-color;
     margin-right: 5px;
+    vertical-align: middle;
   }
 
   li {
@@ -288,8 +289,6 @@ a.button-collapse.top-nav {
 }
 
 .promo-caption {
-  // font-size: 1.7rem;
-  // font-weight: 500;
   margin-top: 0;
   margin-bottom: 0;
 }

@@ -3,6 +3,7 @@
 
 // defined by color pallete created with https://www.materialpalette.com/blue/pink
 $divider-color: #BDBDBD;
+$font2: 'Comfortaa', cursive;
 
 // overrides and extensions on the materialize-css package
 
@@ -13,7 +14,7 @@ main {
 }
 
 .font2 {
-  font-family: 'Comfortaa', cursive;
+  font-family: $font2;
 }
 
 // override padding-left: 300px set in node_modules\materialize-css\sass\style.scss
@@ -129,6 +130,17 @@ nav {
 .pull-up-2 {
   position: relative;
   top: -35px;
+}
+
+.promo-caption {
+  @extend .promo-caption;
+  font-family: $font2;
+}
+
+// overrides card-panel
+.card-panel {
+  @extend .card-panel;
+  border-radius: 8px;
 }
 
 // send your case icon
