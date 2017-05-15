@@ -104,15 +104,18 @@ nav {
 
 
 .top-banner {
-    min-height: 700px;
-    // max-height: 830px;
+    min-height: 660px;
+    max-height: 810px;
+    // workaround for chrome issue that child div doesn't occupe the full height of the parent
+    // http://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
+    height: 1px;
     position: relative;
     z-index: -1;
     background-color: #f1f1f1;
 }
 
 .heroimg {
-    background-image: url('../img/hero_doctors830px.png');
+    background-image: url('../img/hero_doctors810px.png');
     background-size: 75% auto;
     background-repeat: no-repeat;
     background-position: bottom right;
