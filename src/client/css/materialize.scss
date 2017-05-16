@@ -201,6 +201,16 @@ nav {
   font-weight: bold;
 }
 
+#howitworks {
+  background-color: #fff;
+  font-family: $font2;
+  min-height: 400px;
+
+  * {
+    vertical-align: bottom;
+  }
+}
+
 #facts {
   background-color: $primary-color;
   // height: 350px;
