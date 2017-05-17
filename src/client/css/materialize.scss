@@ -102,7 +102,6 @@ nav {
   }
 }
 
-
 .top-banner {
     min-height: 660px;
     max-height: 810px;
@@ -201,6 +200,24 @@ nav {
   font-weight: bold;
 }
 
+.section-header {
+  h1, h5 {
+    @extend .center-align;
+  }
+
+  h1 {
+    font-family: $font2;
+    opacity: 0.2;
+    letter-spacing: 1em;
+  }
+
+  h5 {
+    margin-top: -3em;
+    margin-bottom: 3em;
+    font-weight: bold;
+  }
+}
+
 #howitworks {
   background-color: #fff;
   font-family: $font2;
@@ -209,15 +226,21 @@ nav {
   * {
     vertical-align: bottom;
   }
+
+  h1, h4 {
+    // to achieve top alignment, equilize margins
+    margin-top: 10px;
+  }
 }
 
 #facts {
   background-color: $primary-color;
-  // height: 350px;
-  h1, h2, h3, h4, h5, h6 {
-    display: inline;
-    color: #fff;
-  }
+  
+  background-image: url('../img/dermatology_statistics.png');
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 569px; // matches the backgroung image
+  color: #fff;
 
   h2 {
     font-weight: bold;
@@ -228,6 +251,12 @@ nav {
     padding-right: 35px;
     // 2x to compensate pull-up of the next section
     padding-bottom: 70px;
+  }
+}
+
+#facts-data {
+  h1, h2, h3, h4, h5, h6 {
+    display: inline;
   }
 }
 
@@ -264,7 +293,7 @@ nav {
     color: #fff;
   }
   // padding-top: 4rem;
-  background-color: $primary-color;
+  background-color: #f6f6f6;
 }
 
 #work {background: rgb(247, 247, 247);}
@@ -313,8 +342,8 @@ nav {
     100% { 
         opacity: 1; 
         transform: translateY(0); 
-    } 
-} 
+    }
+}
 
 .fadeInUp { 
     animation-name: fadeInUp; 
