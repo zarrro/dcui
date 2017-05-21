@@ -13,7 +13,7 @@ main {
   flex: 1 0 auto;
 }
 
-.font2 {
+h1, h2, h3, h4, h5, h6 {
   font-family: $font2;
 }
 
@@ -29,9 +29,26 @@ nav {
   background-color:  #fff;
 }
 
+.btn {
+  @extend .btn;
+  // set font-family explicitly
+  font-family: 'Open Sans', sans-serif !important;
+}
+
 .navbar-btn {
   // copy paste from .btn
-  @extend .z-depth-1;
+  @extend .btn;
+
+  // override hover and focus colors
+  &:focus {
+    background-color: darken($primary-color, 10%);
+  }
+
+  &:hover {
+    background-color: lighten($primary-color, 5%);
+    @extend .z-depth-1-half;
+  }
+
   border-radius: $button-radius;
   display: inline-block;
   height: auto;
@@ -42,7 +59,6 @@ nav {
   text-transform: uppercase;
   vertical-align: middle;
   border: none;
-  color: #fff;
   background-color: $primary-color;
   margin-left: 40px;
   margin-bottom: -35px;
@@ -50,7 +66,6 @@ nav {
 
 .navbar-btn:hover {
   background-color: $primary-color;
-  color: #fff;
   box-shadow: none ;
   font-weight: 500;
 }
@@ -136,13 +151,17 @@ nav {
 
 .promo-caption {
   @extend .promo-caption;
-  font-family: $font2;
+  // font-family: $font2;
 }
 
 // overrides card-panel
 .card-panel {
   @extend .card-panel;
   border-radius: 8px;
+}
+
+#logo-container {
+  font-family: $font2;
 }
 
 // send your case icon
@@ -185,11 +204,6 @@ nav {
   p {
     margin-top: 0;
   }
-  
-  // a {
-  //   height: 65px;
-  //   line-height: 65px;
-  // }
 }
 
 .cta-btn {
@@ -206,9 +220,10 @@ nav {
   }
 
   h1 {
-    font-family: $font2;
+    // font-family: $font2;
     opacity: 0.2;
     letter-spacing: 1em;
+    font-weight: bold;
   }
 
   h5 {
@@ -220,8 +235,11 @@ nav {
 
 #howitworks {
   background-color: #fff;
-  font-family: $font2;
   min-height: 400px;
+
+  p {
+    font-family: $font2;
+  }
 
   * {
     vertical-align: bottom;
@@ -260,14 +278,54 @@ nav {
   }
 }
 
-#social {
-  // background-image: url('../img/family-pool.jpg');
-  // background-color: $primary-color;
-  // // background-size: cover;
-  // // background-repeat: no-repeat;
-  // // height: 700px;
-  // width: auto;
+#professionals {
+  background-color: #f6f6f6;
+}
 
+#prof-blue-card {
+  position: absolute;
+  top: 7%;
+  min-height: 76%;
+  background-color: $secondary-color;
+  color: #fff;
+  border-radius: 8px;
+  z-index: 0;
+  .col {
+    padding: 45px;
+  }
+}
+
+#prof-white-card {
+  @extend .z-depth-2;
+  border-radius: 8px;
+  background-color: #fff;
+  z-index: 1;
+  position: absolute;
+  left: 4%;
+  min-height: 90%;
+  padding-top: 90px;
+  padding-right: 45px;
+}
+
+#nadiq {
+  position: relative;
+  top: 60px;
+  left: -18%;
+  z-index: 2;
+}
+
+#nadiq-signiture {
+  margin-top: 60px;
+  margin-left: 30px;
+  h5, h6 {
+    font-weight: bold;
+  }
+  h5 {
+    color: $secondary-color;
+  }
+}
+
+#social {
   i {
     color: #F39317;
     font-size: 18px;
