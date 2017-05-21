@@ -4,13 +4,13 @@
     checkout_path: /home/zaro/dcui
   remote_user: zaro
   tasks:
-  - name: checkout latest dcui
-    git:
-      repo: git@github.com:zarrro/dcui.git
-      dest: "{{ checkout_path }}"
-  - name: install npm dependancies
-    npm:
-      path: "{{ checkout_path }}"
+#  - name: checkout latest dcui
+#    git:
+#      repo: git@github.com:zarrro/dcui.git
+#      dest: "{{ checkout_path }}"
+#  - name: install npm dependancies
+#    npm:
+#      path: "{{ checkout_path }}"
   - name: prepare dcui prod
     command: npm run build.prod chdir={{checkout_path}}
   - name: archive dcui prod build

@@ -14,7 +14,8 @@ import { ConfirmEmailValidatorDirective } from './confirm-email-validator.direct
 
 @NgModule({
   imports: [CommonModule, SharedModule, AuthModule, FormsModule, ImageUploadModule],
-  declarations: [AnamnesisFormComponent, PaymentComponent, ResultComponent, NumberValidRangeDirective, EmailValidatorDirective, ConfirmEmailValidatorDirective],
+  declarations: [AnamnesisFormComponent, PaymentComponent, ResultComponent, NumberValidRangeDirective,
+    EmailValidatorDirective, ConfirmEmailValidatorDirective],
   exports: [AnamnesisFormComponent, PaymentComponent],
   providers: [AnamnesisFormService]
 })

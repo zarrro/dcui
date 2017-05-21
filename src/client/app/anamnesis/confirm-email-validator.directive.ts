@@ -13,7 +13,7 @@ export class ConfirmEmailValidatorDirective implements Validator, OnChanges {
     constructor() {
         this.validator = this.getValidatorFn();
     }
-  
+
     validate(c: FormControl) {
         return this.validator(c);
     }
@@ -35,8 +35,8 @@ export class ConfirmEmailValidatorDirective implements Validator, OnChanges {
                 return {
                     valid: false
                 };
-            }
-        }
+            };
+        };
     }
 }
 

@@ -8,11 +8,11 @@ import { AbstractControl, NG_VALIDATORS, ValidatorFn, Validator, FormControl } f
 })
 export class EmailValidatorDirective implements Validator {
     validator: ValidatorFn;
-  
+
     constructor() {
         this.validator = validateEmailFactory();
     }
-  
+
     validate(c: FormControl) {
         return this.validator(c);
     }
@@ -22,7 +22,8 @@ export class EmailValidatorDirective implements Validator {
 function validateEmailFactory() : ValidatorFn {
     return (c: AbstractControl) => {
 
-        var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+        var EMAIL_REGEXP =
+            /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
 
         if(c.value && (c.value.length <= 5 || !EMAIL_REGEXP.test(c.value))) {
             return {
@@ -30,6 +31,6 @@ function validateEmailFactory() : ValidatorFn {
             };
         } else {
             return null;
-        }
-    }
+        };
+    };
 }
