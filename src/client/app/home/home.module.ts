@@ -8,13 +8,14 @@ import { HowitworksComponent } from './howitworks.component';
 import { FactsComponent } from './facts.component';
 import { TeamComponent } from './team.component';
 import { ProfessionalsComponent } from './professionals.component';
+import { NetworkComponent } from './network.component';
 
 
 
 @NgModule({
   imports: [CommonModule, SharedModule],
   declarations: [HomeComponent, IntroComponent, SocialproofComponent, FactsComponent,
-    TeamComponent, HowitworksComponent, ProfessionalsComponent],
+    TeamComponent, HowitworksComponent, ProfessionalsComponent, NetworkComponent],
   exports: [HomeComponent]
 })
 export class HomeModule { }

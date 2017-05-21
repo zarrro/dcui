@@ -221,7 +221,7 @@ nav {
 
   h1 {
     // font-family: $font2;
-    opacity: 0.2;
+    opacity: 0.15;
     letter-spacing: 1em;
     font-weight: bold;
   }
@@ -280,6 +280,8 @@ nav {
 
 #professionals {
   background-color: #f6f6f6;
+  //compesate image shift down
+  padding-bottom: 2rem;
 }
 
 #prof-blue-card {
@@ -326,31 +328,17 @@ nav {
 }
 
 #social {
-  i {
-    color: #F39317;
-    font-size: 18px;
-  }
+  background-color: #fff;
+}
 
-  p {
-    margin: 0px;
-  }
-
-  .row {
-    margin-bottom: 30px;
-  }
-
-  .card-panel {
-    padding:45px;
-    background-color: rgba(255, 255, 255, 0.71);
-  }
+#network {
+  background-color: #f4f4f4;
 }
 
 #team {
-    // background-color: #B3E5FC;
   h2 {
     color: #fff;
   }
-  // padding-top: 4rem;
   background-color: #f6f6f6;
 }
 
