@@ -24,9 +24,9 @@ header, main, footer {
 
 // navbar
 
-// // overrides defaults
+// overrides defaults
 nav {
-  background-color:  #fff;
+  background-color: #fff;
 }
 
 .btn {
@@ -161,7 +161,14 @@ nav {
 }
 
 #logo-container {
-  font-family: $font2;
+  //font-family: $font2;
+  min-width: 200px;
+  width: 18%;
+  margin: 0px;
+
+  img {
+    vertical-align: middle;
+  }
 }
 
 // send your case icon
