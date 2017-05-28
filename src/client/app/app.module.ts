@@ -10,10 +10,11 @@ import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { AnamnesisModule } from './anamnesis/anamnesis.module';
 import { AuthModule } from './auth/auth.module';
+import { InfopagesModule } from './infopages/infopages.module';
 
 @NgModule({
   imports: [BrowserModule, HttpModule, RouterModule.forRoot(routes),
-    HomeModule, SharedModule.forRoot(), AnamnesisModule, AuthModule],
+    HomeModule, SharedModule.forRoot(), AnamnesisModule, AuthModule, InfopagesModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

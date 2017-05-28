@@ -5,6 +5,7 @@ import { RouterModule } from '@angular/router';
 import { BackendService } from './backend-service/backend-service';
 import { NavbarComponent } from './navbar/index';
 import { FooterComponent } from './footer/index';
+import { ContactsComponent } from './footer/contacts.component';
 import { AuthModule } from '../auth/auth.module';
 import { MaterializeDirective } from 'angular2-materialize';
 
@@ -14,7 +15,7 @@ import { MaterializeDirective } from 'angular2-materialize';
 
 @NgModule({
   imports: [CommonModule, RouterModule, AuthModule],
-  declarations: [NavbarComponent, FooterComponent, MaterializeDirective],
+  declarations: [NavbarComponent, FooterComponent, MaterializeDirective, ContactsComponent],
   exports: [NavbarComponent, FooterComponent, CommonModule, FormsModule, RouterModule, MaterializeDirective],
   providers: [BackendService]
 })
