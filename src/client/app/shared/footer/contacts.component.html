@@ -12,11 +12,13 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m8 offset-m2">
-                <div class="card-panel pull-up">
+                <div class="card-panel pull-up-2x">
                     <div class="row">
                         <div class="col s12 m6">
                             <div class="row">
-                                <h5>Send us a message</h5>
+                                <div class="col s12">
+                                    <h5>Send us a message</h5>
+                                </div>
                                 <div class="input-field col s12">
                                     <input id="yname" type="text" name="yname">
                                     <label for="yname">Your Name</label>
@@ -29,14 +31,18 @@
                                     <textarea id="ymessage" required class="materialize-textarea" name="ymessage"></textarea>
                                     <label #descriptionLabel for="ymessage">Leave us a message here</label>
                                 </div>
+                                <div class="input-field col s12">
+                                    <button type="submit" class="btn waves-effect waves-light">SEND</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="col s12 m6">
+                        <div class="col s12 m6" style="padding-left: 60px">
                             <h5>Contacts</h5>
                             <ul>
-                                <li>Email: yourdoctor@dermal.clinic</li>
-                                <li>Skype: yourdoctor-eu</li>
-                                <li>Viber: 8888</li>
+                                <li><i class="tiny material-icons">label</i>Email: yourdoctor@dermal.clinic</li>
+                                <li><i class="tiny material-icons">label</i>Skype: yourdoctor-eu</li>
+                                <li><i class="tiny material-icons">label</i>Address: Sofia, 1700</li>
+                                <li><i class="tiny material-icons">label</i>Viber: 8888</li>
                             </ul>
                         </div>
                     </div>

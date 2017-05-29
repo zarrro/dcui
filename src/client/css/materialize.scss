@@ -144,6 +144,10 @@ nav {
   margin-top: -35px;
 }
 
+.pull-up-2x {
+  margin-top: -70px;
+}
+
 .pull-up-2 {
   position: relative;
   top: -35px;
@@ -353,10 +357,30 @@ nav {
 
 #contacts-row1{
   background: $secondary-color;
+  color: #fff;
+  padding-bottom: 60px;
 }
 
 #contacts-row2{
   background: #ebebeb;
+
+  i {
+    vertical-align: middle;
+    color: $primary-color;
+    margin-right: 10px;
+  }
+
+  ul {
+    margin-top: 40px;
+  }
+
+  ul li {
+    padding-bottom: 15px;
+  }
+
+  .row {
+    margin-bottom: 0px;
+  }
 }
 
 // anamnesis form
