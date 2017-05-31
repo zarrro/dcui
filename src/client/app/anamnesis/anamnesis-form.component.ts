@@ -48,7 +48,8 @@ export class AnamnesisFormComponent implements AfterViewInit {
     'image1': '',
     'image2': '',
     'email':'',
-    'confirmEmail':''
+    'confirmEmail':'',
+    'accept_terms':''
   };
 
   // ### is a placeholder. It will be replaced with the current value for the given error key
@@ -82,6 +83,9 @@ export class AnamnesisFormComponent implements AfterViewInit {
     'confirmEmail': {
       'required': 'Email is required.',
       'valid': 'Confirm email is not the same'
+    },
+    'accept_terms': {
+      'required' : 'You have to accept the Terms & Conditions to continue'
     }
   };
 

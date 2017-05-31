@@ -12,6 +12,7 @@ class Survey {
 	age: string;
 	email: string;
 	confirmEmail: string;
+	accept_terms: string;
 }
 
 @Injectable()

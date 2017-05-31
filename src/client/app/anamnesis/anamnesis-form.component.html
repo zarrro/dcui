@@ -16,8 +16,9 @@
             </div>
             <div class="row valing-wrapper">
               <div class="col s2 offset-s1">
-                <img class="responsive-img img-btn-hover" [(src)]="form.image1Resized" (click)="onUploadPhotoClick($event, fileInput1)"/>
-                <input id="image1" style="display:none" #fileInput1 type="file" image-upload (imageSelected)="selectImage1($event, fileInput1)" [resizeOptions]="resizeOptions">
+                <img class="responsive-img img-btn-hover" [(src)]="form.image1Resized" (click)="onUploadPhotoClick($event, fileInput1)" />
+                <input id="image1" style="display:none" #fileInput1 type="file" image-upload (imageSelected)="selectImage1($event, fileInput1)"
+                  [resizeOptions]="resizeOptions">
               </div>
               <div class="col s8">
                 <p class="valign left-align">Upload an overview photo<br>(25 - 30cm away)</p>
@@ -27,8 +28,9 @@
             </div>
             <div class="row valing-wrapper">
               <div class="col s2 offset-s1">
-                <img class="responsive-img img-btn-hover" [(src)]="form.image2Resized" (click)="onUploadPhotoClick($event, fileInput2)"/>
-                <input id="image2" name="image2" style="display:none" #fileInput2 type="file" image-upload (imageSelected)="selectImage2($event, fileInput2)" [resizeOptions]="resizeOptions">
+                <img class="responsive-img img-btn-hover" [(src)]="form.image2Resized" (click)="onUploadPhotoClick($event, fileInput2)" />
+                <input id="image2" name="image2" style="display:none" #fileInput2 type="file" image-upload (imageSelected)="selectImage2($event, fileInput2)"
+                  [resizeOptions]="resizeOptions">
               </div>
               <div class="col s8">
                 <p class="valign left-align">Upload close up photo<br>(~ 10cm away)</p>
@@ -50,11 +52,11 @@
               <label class="col s10 offset-s1 left-align">Which of the common sympthoms do you have?</label>
               <p class="col offset-s1 s10 offset-m1 m5">
                 <input type="checkbox" id="checkbox_itchy" name="itchy" [(ngModel)]="form.survey.itchy" />
-                <label class="checkbox_label"  for="checkbox_itchy">Itching</label>
+                <label class="checkbox_label" for="checkbox_itchy">Itching</label>
               </p>
               <p class="col offset-s1 s10 m5">
                 <input type="checkbox" id="checkbox_hurts" name="hurts" [(ngModel)]="form.survey.hurts" />
-                <label class="checkbox_label"  for="checkbox_hurts">Pain</label>
+                <label class="checkbox_label" for="checkbox_hurts">Pain</label>
               </p>
               <p class="col offset-s1 s10 offset-m1 m5">
                 <input type="checkbox" id="checkbox_hotfeel" name="hotfeel" [(ngModel)]="form.survey.hotfeel" />
@@ -66,17 +68,17 @@
               </p>
             </div>
             <div class="row">
-                <div class="col offset-s1 s10">
-                  <label for="select_duration">For how long is this condition?</label>
-                </div>
-                <div class="col offset-s1 s10">
-                    <select id="select_duration" materialize="material_select" name="duration" [(ngModel)]="form.survey.duration">
+              <div class="col offset-s1 s10">
+                <label for="select_duration">For how long is this condition?</label>
+              </div>
+              <div class="col offset-s1 s10">
+                <select id="select_duration" materialize="material_select" name="duration" [(ngModel)]="form.survey.duration">
                       <option value="Days">Days</option>
                       <option value="Weeks">Weeks</option>
                       <option value="Months">Months</option>
                       <option value="Years">Years</option>
                     </select>
-                </div>
+              </div>
             </div>
             <div class="row">
               <div class="input-field col offset-s1 s10">
@@ -95,7 +97,7 @@
                 <h5>PROVIDE GENERAL INFORMATION</h5>
               </div>
             </div>
-          
+
             <div class="row">
               <div class="input-field col offset-s1 s10 offset-m1 m5">
                 <select id="select_sex" materialize="material_select" name="sex" [(ngModel)]="form.survey.sex">
@@ -115,9 +117,11 @@
                 <input id="confirmEmail" type="text" class="validate" name="confirmEmail" [confirmEmail]="form.survey.email" [(ngModel)]="form.survey.confirmEmail">
                 <label for="confirmEmail">Confirm email</label>
               </div>
-              <div class="center input-field col offset-s1 s10">
-                <input type="checkbox" id="accept_terms" name="accept_terms" [(ngModel)]="form.survey.accept_terms" />
-                <label class="checkbox_label"  for="accept_terms">I accept the <a id="terms" [routerLink]="['/terms']">terms and conditions.</a></label>
+              <div class="center input-field col offset-s3 s6">
+                <!-- workaround - instead of the id of the field to match the name value, the id of the field's label matches the name value.
+                This is to make the error message to be put after the label element not between the checkbox and the label. -->
+                <input type="checkbox" id="terms_checkbox" name="accept_terms" required [(ngModel)]="form.survey.accept_terms" />
+                <label class="checkbox_label" id="accept_terms" for="terms_checkbox">I accept the <a id="terms" [routerLink]="['/terms']">terms and conditions.</a></label>
               </div>
             </div>
           </div>
