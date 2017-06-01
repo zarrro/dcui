@@ -1,9 +1,9 @@
 import { Route } from '@angular/router';
-import { TermsComponent } from './index';
+import { TermsPageComponent } from './index';
 
 export const InfopagesRoutes: Route[] = [
   {
     path: 'terms',
-    component: TermsComponent
+    component: TermsPageComponent
   }
 ];

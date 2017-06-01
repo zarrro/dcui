@@ -117,16 +117,26 @@
                 <input id="confirmEmail" type="text" class="validate" name="confirmEmail" [confirmEmail]="form.survey.email" [(ngModel)]="form.survey.confirmEmail">
                 <label for="confirmEmail">Confirm email</label>
               </div>
-              <div class="center input-field col offset-s3 s6">
-                <!-- workaround - instead of the id of the field to match the name value, the id of the field's label matches the name value.
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col offset-s3 s6">
+              <!-- workaround - instead of the id of the field to match the name value, the id of the field's label matches the name value.
                 This is to make the error message to be put after the label element not between the checkbox and the label. -->
-                <input type="checkbox" id="terms_checkbox" name="accept_terms" required [(ngModel)]="form.survey.accept_terms" />
-                <label class="checkbox_label" id="accept_terms" for="terms_checkbox">I accept the <a id="terms" [routerLink]="['/terms']">terms and conditions.</a></label>
-              </div>
+              <input type="checkbox" id="terms_checkbox" name="accept_terms" required [(ngModel)]="form.survey.accept_terms" />
+              <label class="checkbox_label" id="accept_terms" for="terms_checkbox">I accept the <a id="terms" href="#modal1">Terms & Conditions.</a></label>
             </div>
           </div>
           <div class="row" style="padding-top: 20px">
-            <button type="submit" (click)="submitBtnClicked()" class="btn col s6 offset-s3 waves-effect waves-light"> > NEXT STEP: PAYMENT</button>
+              <button type="submit" (click)="submitBtnClicked()" class="btn col s6 offset-s3 waves-effect waves-light"> > NEXT STEP: PAYMENT</button>
+          </div>
+        </div>
+        <div id="modal1" class="modal modal-fixed-footer">
+          <div class="modal-content">
+            <terms></terms>
+          </div>
+          <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
           </div>
         </div>
       </form>

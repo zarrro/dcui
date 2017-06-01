@@ -128,7 +128,7 @@ export class AnamnesisFormComponent implements AfterViewInit {
       this.fieldOnFocus = event.target.name;
     });
 
-
+    $('.modal').modal();
   }
 
   ngAfterViewChecked() {
