@@ -17,7 +17,7 @@
             <div class="row valing-wrapper">
               <div class="col s2 offset-s1">
                 <img class="responsive-img img-btn-hover" [(src)]="form.image1Resized" (click)="onUploadPhotoClick($event, fileInput1)" />
-                <input id="image1" style="display:none" #fileInput1 type="file" image-upload (imageSelected)="selectImage1($event, fileInput1)"
+                <input id="image1" style="display:none" #fileInput1 type="file" imageUpload (imageSelected)="selectImage1($event, fileInput1)"
                   [resizeOptions]="resizeOptions">
               </div>
               <div class="col s8">
@@ -29,7 +29,7 @@
             <div class="row valing-wrapper">
               <div class="col s2 offset-s1">
                 <img class="responsive-img img-btn-hover" [(src)]="form.image2Resized" (click)="onUploadPhotoClick($event, fileInput2)" />
-                <input id="image2" name="image2" style="display:none" #fileInput2 type="file" image-upload (imageSelected)="selectImage2($event, fileInput2)"
+                <input id="image2" name="image2" style="display:none" #fileInput2 type="file" imageUpload (imageSelected)="selectImage2($event, fileInput2)"
                   [resizeOptions]="resizeOptions">
               </div>
               <div class="col s8">
